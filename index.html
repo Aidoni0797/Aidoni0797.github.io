@@ -9,42 +9,67 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
+      background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+      color: #ffffff;
     }
     header {
-      background-color: #4CAF50;
+      background: url('https://cdn.pixabay.com/photo/2016/03/31/19/58/dolphins-1299837_1280.png') no-repeat center;
+      background-size: cover;
       color: white;
-      padding: 1rem 0;
+      padding: 2rem 0;
       text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "iDONi";
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #FFD700;
+      text-shadow: 1px 1px 5px #000;
     }
     main {
-      max-width: 800px;
+      max-width: 900px;
       margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      color: #333;
     }
     h1, h2 {
-      color: #4CAF50;
+      color: #1E90FF;
     }
     p {
-      line-height: 1.6;
+      line-height: 1.8;
     }
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: #333;
-      color: white;
+      background: #1E90FF;
+      color: #ffffff;
       margin-top: 2rem;
     }
     a {
-      color: #4CAF50;
+      color: #1E90FF;
       text-decoration: none;
+      font-weight: bold;
     }
     a:hover {
       text-decoration: underline;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 0.5rem 0;
+    }
+    ul li::before {
+      content: "\1F30A"; /* Волнушка */
+      margin-right: 0.5rem;
     }
   </style>
 </head>
@@ -55,7 +80,7 @@
   </header>
   <main>
     <h2>Обо мне</h2>
-    <p>Привет! Я увлекаюсь программированием и создаю небольшие проекты на Python, Go и других языках. Здесь я публикую свои коды и делюсь разбором задач.</p>
+    <p>Привет! Я увлекаюсь программированием и создаю проекты на Python, Go и других языках. Здесь я публикую свои коды и делюсь разбором задач.</p>
     
     <h2>Проекты</h2>
     <ul>
@@ -68,8 +93,7 @@
     <p>Свяжитесь со мной через <a href="mailto:your-email@example.com">электронную почту</a>.</p>
   </main>
   <footer>
-    <p>© 2024 Мои проекты и разборы. Все права защищены.</p>
+    <p>© 2024 Мои проекты и разборы. Все права защищены. | <strong>iDONi</strong></p>
   </footer>
 </body>
 </html>
-
