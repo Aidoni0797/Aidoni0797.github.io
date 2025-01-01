@@ -13,22 +13,23 @@
       color: #ffffff;
     }
     header {
-      background: url('https://cdn.pixabay.com/photo/2016/03/31/19/58/dolphins-1299837_1280.png') no-repeat center;
-      background-size: cover;
-      color: white;
-      padding: 2rem 0;
       text-align: center;
+      padding: 2rem 0;
       position: relative;
     }
-    header::after {
-      content: "iDONi";
-      position: absolute;
-      bottom: 10px;
-      right: 20px;
-      font-size: 2rem;
-      font-weight: bold;
+    .logo {
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+    }
+    header h1 {
+      margin-top: 1rem;
       color: #FFD700;
-      text-shadow: 1px 1px 5px #000;
+      text-shadow: 2px 2px 5px #000;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
     }
     main {
       max-width: 900px;
@@ -84,6 +85,7 @@
 </head>
 <body>
   <header>
+    <img src="/mnt/data/5382287530713544840.jpg" alt="iDONi Logo" class="logo">
     <h1>Добро пожаловать на мой сайт!</h1>
     <p>Место, где я делюсь своими проектами и разбором кода.</p>
   </header>
