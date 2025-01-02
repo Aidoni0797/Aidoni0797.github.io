@@ -71,6 +71,36 @@
     a:hover {
       text-decoration: underline;
     }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    input, textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
     ul {
       list-style: none;
       padding: 0;
@@ -105,7 +135,7 @@
     </ul>
 
     <div class="form-container">
-        <h1>Форма обратной связи</h1>
+        <h1><i class="fas fa-comment-dots"></i>Форма обратной связи</h1>
         <form action="submit.php" method="POST">
             <label for="name">Ваше имя:</label>
             <input type="text" id="name" name="name" required>
