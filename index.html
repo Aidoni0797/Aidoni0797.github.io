@@ -162,6 +162,20 @@
       color: #1E90FF;
     }
 
+    .rating-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 30px;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
     @keyframes slide {
       0% {
         transform: translateX(0);
@@ -177,6 +191,34 @@
     <img src="12.png" alt="iDONi Logo" class="logo">
     <h1 style="color:#1E90FF;">Добро пожаловать на web-сайт iDONi</h1>
   </header>
+
+  <div class="rating-container">
+    <i class="fas fa-star" id="excellent-icon" style="color: green;"></i> 
+    <span id="excellent-count">0</span>
+
+    <i class="fas fa-star" id="bad-icon" style="color: red;"></i> 
+    <span id="bad-count">0</span>
+  </div>
+
+  <button onclick="incrementExcellent()">Отлично</button>
+  <button onclick="incrementBad()">Плохо</button>
+
+  <script>
+    let excellentCount = 0;
+    let badCount = 0;
+
+    function incrementExcellent() {
+      excellentCount++;
+      document.getElementById('excellent-count').textContent = excellentCount;
+    }
+
+    function incrementBad() {
+      badCount++;
+      document.getElementById('bad-count').textContent = badCount;
+    }
+  </script>
+
+  
   <main>
     <h2><i class="fas fa-user icon"></i> Обо мне</h2>
     <ul>
