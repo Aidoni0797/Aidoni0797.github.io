@@ -225,6 +225,65 @@
         localStorage.setItem('badCount', badCount); // Сохраняем в localStorage
       }
     </script>
+
+    <h1>Feedback Counter</h1>
+    <button id="good">👍 Good</button>
+    <button id="bad">👎 Bad</button>
+    <p>Good: <span id="good-count">0</span></p>
+    <p>Bad: <span id="bad-count">0</span></p>
+    
+    <script>
+      // Подключение к Supabase
+      const SUPABASE_URL = "https://xyzcompany.supabase.co"; // Замените на ваш URL
+      const SUPABASE_KEY = "YOUR_PUBLIC_ANON_KEY"; // Вставьте ваш API-ключ
+      const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  
+      // Функция для получения данных
+      async function fetchData() {
+        const { data, error } = await supabase
+          .from('feedback')
+          .select('*');
+  
+        if (error) {
+          console.error('Ошибка при получении данных:', error);
+          return;
+        }
+  
+        // Отображение данных
+        const goodFeedback = data.find(item => item.feedback_type === 'good');
+        const badFeedback = data.find(item => item.feedback_type === 'bad');
+        document.getElementById('good-count').innerText = goodFeedback ? goodFeedback.count : 0;
+        document.getElementById('bad-count').innerText = badFeedback ? badFeedback.count : 0;
+      }
+  
+      // Функция для обновления данных
+      async function updateFeedback(type) {
+        const { data, error } = await supabase
+          .from('feedback')
+          .upsert({ feedback_type: type, count: 1 }, { onConflict: 'feedback_type' });
+  
+        if (error) {
+          console.error('Ошибка при обновлении данных:', error);
+          return;
+        }
+  
+        // Увеличение счётчика
+        const updatedCount = data[0].count + 1;
+        await supabase
+          .from('feedback')
+          .update({ count: updatedCount })
+          .eq('feedback_type', type);
+  
+        fetchData(); // Обновить данные на странице
+      }
+  
+      // События кнопок
+      document.getElementById('good').addEventListener('click', () => updateFeedback('good'));
+      document.getElementById('bad').addEventListener('click', () => updateFeedback('bad'));
+  
+      // Загрузка данных при открытии страницы
+      fetchData();
+    </script>
   </header>
   <main>
     <h2><i class="fas fa-user icon"></i> Обо мне</h2>
