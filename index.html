@@ -7,6 +7,10 @@
   <link rel="icon" href="iDONi.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <style>
     body {
       font-family: 'Fredoka One', cursive;
@@ -165,6 +169,28 @@
       <li>Я редко участвую в стажировках, которые не приносят значимых <a href="https://github.com/Aidoni0797/internship_first_task" target="_blank">результатов.</a> (больно)</li>
     </ul>
 
+    <div class="slider-container">
+      <div class="slider">
+        <i class="fab fa-github"></i>
+        <i class="fab fa-python"></i>
+        <i class="fab fa-golang"></i>
+        <i class="fab fa-js-square"></i>
+        <i class="fab fa-node"></i>
+      </div>
+    </div>
+    
+    <script>
+      $(document).ready(function(){
+        $('.slider').slick({
+          autoplay: true,
+          autoplaySpeed: 2000,
+          arrows: false,  // Отключаем стрелки, если не нужны
+          dots: true,     // Показываем индикаторы
+        });
+      });
+    </script>
+
+    
     <div class="form-container">
         <h1><i class="fas fa-comment-dots"></i> Форма обратной связи</h1>
         <form action="https://formspree.io/f/xnnnopnr" method="POST">
