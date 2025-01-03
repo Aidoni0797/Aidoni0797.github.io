@@ -144,6 +144,33 @@
       margin-right: 0.5rem;
     }
   </style>
+  <script>
+    const form = document.getElementById("contact-form");
+    const responseDiv = document.getElementById("form-response");
+  
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault(); // Остановить стандартное поведение формы
+  
+      const formData = new FormData(form);
+  
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
+  
+        if (response.ok) {
+          form.style.display = "none"; // Скрыть форму
+          responseDiv.style.display = "block"; // Показать сообщение
+        } else {
+          alert("Ошибка отправки формы. Попробуйте еще раз.");
+        }
+      } catch (error) {
+        alert("Ошибка сети. Проверьте подключение к интернету.");
+      }
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -164,20 +191,24 @@
       <li>Мои проекты на Go.</li>
     </ul>
 
-    <div class="form-container">
-        <h1><i class="fas fa-comment-dots"></i> Форма обратной связи</h1>
-        <form action="https://formspree.io/f/xnnnopnr" method="POST">
-            <label for="name">Ваше <b> имя:</b></label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Ваш email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Ваше <b> сообщение:</b></label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <button type="submit">Отправить</button>
-        </form>
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-group">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Ваш email:</label>
+        <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" placeholder="Введите ваше сообщение" required></textarea>
+      </div>
+      <button type="submit">Отправить</button>
+    </form>
+    
+    <div id="form-response" style="display: none; margin-top: 20px; color: green;">
+      Спасибо! Ваше сообщение отправлено.
     </div>
 
     <div class="telegram-container">
