@@ -7,10 +7,7 @@
   <link rel="icon" href="iDONi.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Подключаем Font Awesome для иконок -->
   <style>
     body {
       font-family: 'Fredoka One', cursive;
@@ -147,6 +144,33 @@
       content: "\1F42C"; /* Дельфин 🐬 */
       margin-right: 0.5rem;
     }
+    
+    .slider-container {
+      width: 100%;
+      overflow: hidden; /* Обрезаем элементы, которые выходят за пределы */
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .slider {
+      display: flex;
+      animation: slide 10s infinite linear; /* Анимация слайдера */
+    }
+
+    .slider i {
+      font-size: 80px; /* Увеличиваем размер иконок */
+      margin: 0 30px; /* Увеличиваем отступы между иконками */
+      color: #333;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
   </style>
 </head>
 <body>
@@ -178,19 +202,7 @@
         <i class="fab fa-node"></i>
       </div>
     </div>
-    
-    <script>
-      $(document).ready(function(){
-        $('.slider').slick({
-          autoplay: true,
-          autoplaySpeed: 2000,
-          arrows: false,  // Отключаем стрелки, если не нужны
-          dots: true,     // Показываем индикаторы
-        });
-      });
-    </script>
-
-    
+     
     <div class="form-container">
         <h1><i class="fas fa-comment-dots"></i> Форма обратной связи</h1>
         <form action="https://formspree.io/f/xnnnopnr" method="POST">
