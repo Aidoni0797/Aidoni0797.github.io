@@ -191,40 +191,6 @@
     <img src="12.png" alt="iDONi Logo" class="logo">
     <h1 style="color:#1E90FF;">Добро пожаловать на web-сайт iDONi</h1>
     <br>
-    <div class="rating-container">
-      <i class="fas fa-star" id="excellent-icon" style="color: green;"></i> 
-      <span id="excellent-count" style="color: green;">0</span>
-  
-      <i class="fas fa-star" id="bad-icon" style="color: red;"></i> 
-      <span id="bad-count" style="color: red;">0</span>
-    </div>
-    
-    <button onclick="incrementExcellent()">Отлично</button>
-    <button onclick="incrementBad()">Плохо</button>
-
-    <script>
-      // Получаем сохраненные значения из localStorage или устанавливаем 0, если нет данных
-      let excellentCount = localStorage.getItem('excellentCount') ? parseInt(localStorage.getItem('excellentCount')) : 0;
-      let badCount = localStorage.getItem('badCount') ? parseInt(localStorage.getItem('badCount')) : 0;
-  
-      // Отображаем сохраненные значения
-      document.getElementById('excellent-count').textContent = excellentCount;
-      document.getElementById('bad-count').textContent = badCount;
-  
-      // Функция для увеличения счетчика "Отлично"
-      function incrementExcellent() {
-        excellentCount++;
-        document.getElementById('excellent-count').textContent = excellentCount;
-        localStorage.setItem('excellentCount', excellentCount); // Сохраняем в localStorage
-      }
-  
-      // Функция для увеличения счетчика "Плохо"
-      function incrementBad() {
-        badCount++;
-        document.getElementById('bad-count').textContent = badCount;
-        localStorage.setItem('badCount', badCount); // Сохраняем в localStorage
-      }
-    </script>
 
     <button id="good">👍 Good</button>
     <button id="bad">👎 Bad</button>
