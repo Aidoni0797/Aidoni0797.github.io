@@ -226,7 +226,6 @@
       }
     </script>
 
-    <h1>Feedback Counter</h1>
     <button id="good">👍 Good</button>
     <button id="bad">👎 Bad</button>
     <p>Good: <span id="good-count">0</span></p>
@@ -234,8 +233,8 @@
     
     <script>
       // Подключение к Supabase
-      const SUPABASE_URL = "https://xyzcompany.supabase.co"; // Замените на ваш URL
-      const SUPABASE_KEY = "YOUR_PUBLIC_ANON_KEY"; // Вставьте ваш API-ключ
+      const SUPABASE_URL = "https://ffkkefdyevwclcjrzywg.supabase.co"; // Замените на ваш URL
+      const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg"; // Вставьте ваш API-ключ
       const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   
       // Функция для получения данных
