@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Подключаем Font Awesome для иконок -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <style>
     body {
       font-family: 'Fredoka One', cursive;
@@ -196,71 +195,7 @@
     <button id="bad">👎 Bad</button>
 
 
-    <script>
-      // Подключение к Supabase
-      const SUPABASE_URL = "https://ffkkefdyevwclcjrzywg.supabase.co"; // Замените на ваш URL
-      const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg"; // Вставьте ваш API-ключ
-      //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-      const { createClient } = supabase;
-
-      const supabase = createClient('https://ffkkefdyevwclcjrzywg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg');
   
-      // Функция для получения данных
-      async function fetchData() {
-        const { data, error } = await supabase
-          .from('feedback')
-          .select('*');
-  
-        if (error) {
-          console.error('Ошибка при получении данных:', error);
-          return;
-        }
-  
-        // Отображение данных
-        const goodFeedback = data.find(item => item.feedback_type === 'good');
-        const badFeedback = data.find(item => item.feedback_type === 'bad');
-        document.getElementById('good-count').innerText = goodFeedback ? goodFeedback.count : 0;
-        document.getElementById('bad-count').innerText = badFeedback ? badFeedback.count : 0;
-      }
-  
-      // Функция для обновления данных
-      async function updateFeedback(type) {
-        // Получаем текущий счётчик
-        const { data: existingData, error: fetchError } = await supabase
-          .from('feedback')
-          .select('*')
-          .eq('feedback_type', type)
-          .single();
-  
-        if (fetchError) {
-          console.error('Ошибка при получении текущего значения:', fetchError);
-          return;
-        }
-  
-        // Увеличиваем счётчик
-        const currentCount = existingData ? existingData.count : 0;
-        const newCount = currentCount + 1;
-  
-        // Обновляем или вставляем запись
-        const { error: updateError } = await supabase
-          .from('feedback')
-          .upsert({ feedback_type: type, count: newCount });
-  
-        if (updateError) {
-          console.error('Ошибка при обновлении данных:', updateError);
-          return;
-        }
-  
-        fetchData(); // Обновить данные на странице
-      }
-  
-      // События кнопок
-      document.getElementById('good').addEventListener('click', () => updateFeedback('good'));
-      document.getElementById('bad').addEventListener('click', () => updateFeedback('bad'));
-  
-      // Загрузка данных при открытии страницы
-      fetchData();
-    </script>
   </header>
   <main>
     <h2><i class="fas fa-user icon"></i> Обо мне</h2>
@@ -334,5 +269,71 @@
   <footer>
     <p>© 2025 Мои проекты и разборы | iDONi</p>
   </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+      // Подключение к Supabase
+      const SUPABASE_URL = "https://ffkkefdyevwclcjrzywg.supabase.co"; // Замените на ваш URL
+      const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg"; // Вставьте ваш API-ключ
+      //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+      const { createClient } = supabase;
+
+      const supabase = createClient('https://ffkkefdyevwclcjrzywg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg');
+  
+      // Функция для получения данных
+      async function fetchData() {
+        const { data, error } = await supabase
+          .from('feedback')
+          .select('*');
+  
+        if (error) {
+          console.error('Ошибка при получении данных:', error);
+          return;
+        }
+  
+        // Отображение данных
+        const goodFeedback = data.find(item => item.feedback_type === 'good');
+        const badFeedback = data.find(item => item.feedback_type === 'bad');
+        document.getElementById('good-count').innerText = goodFeedback ? goodFeedback.count : 0;
+        document.getElementById('bad-count').innerText = badFeedback ? badFeedback.count : 0;
+      }
+  
+      // Функция для обновления данных
+      async function updateFeedback(type) {
+        // Получаем текущий счётчик
+        const { data: existingData, error: fetchError } = await supabase
+          .from('feedback')
+          .select('*')
+          .eq('feedback_type', type)
+          .single();
+  
+        if (fetchError) {
+          console.error('Ошибка при получении текущего значения:', fetchError);
+          return;
+        }
+  
+        // Увеличиваем счётчик
+        const currentCount = existingData ? existingData.count : 0;
+        const newCount = currentCount + 1;
+  
+        // Обновляем или вставляем запись
+        const { error: updateError } = await supabase
+          .from('feedback')
+          .upsert({ feedback_type: type, count: newCount });
+  
+        if (updateError) {
+          console.error('Ошибка при обновлении данных:', updateError);
+          return;
+        }
+  
+        fetchData(); // Обновить данные на странице
+      }
+  
+      // События кнопок
+      document.getElementById('good').addEventListener('click', () => updateFeedback('good'));
+      document.getElementById('bad').addEventListener('click', () => updateFeedback('bad'));
+  
+      // Загрузка данных при открытии страницы
+      fetchData();
+    </script>
 </body>
 </html>
