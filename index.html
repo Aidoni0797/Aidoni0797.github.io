@@ -272,30 +272,12 @@
   </footer>
     <script>
       // Подключение к Supabase
-      //const SUPABASE_URL = "https://ffkkefdyevwclcjrzywg.supabase.co"; // Замените на ваш URL
-      //const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg"; // Вставьте ваш API-ключ
+      const SUPABASE_URL = "https://ffkkefdyevwclcjrzywg.supabase.co"; // Замените на ваш URL
+      const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg"; // Вставьте ваш API-ключ
       //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-      //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-      //console.log(supabase);
-      document.addEventListener('DOMContentLoaded', function() {
-            const { createClient } = supabase;
-            const supabase = createClient('https://ffkkefdyevwclcjrzywg.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg');
-            
-            async function getData() {
-                const { data, error } = await supabase
-                    .from('feedback')
-                    .select('*');
-                
-                if (error) {
-                    console.error('Ошибка:', error);
-                } else {
-                    console.log('Данные:', data);
-                }
-            }
-
-            // Вызов функции
-            getData();
-        });
+      const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+      console.log(supabase);
+ 
       // Функция для получения данных
       async function fetchData() {
         const { data, error } = await supabase
