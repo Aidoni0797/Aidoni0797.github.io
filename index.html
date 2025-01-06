@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iDONi</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
   <link rel="icon" href="iDONi.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -191,10 +190,39 @@
     <img src="12.png" alt="iDONi Logo" class="logo">
     <h1 style="color:#1E90FF;">Добро пожаловать на web-сайт iDONi</h1>
     <br>
-    <p style="color:blue;">Good: <span id="good-count">0</span>   Bad: <span id="bad-count">0</span></p>
-    <button id="good">👍 Good</button>
-    <button id="bad">👎 Bad</button>
-
+    <div class="rating-container">
+      <i class="fas fa-star" id="excellent-icon" style="color: green;"></i> 
+      <span id="excellent-count" style="color: green;">0</span>
+  
+      <i class="fas fa-star" id="bad-icon" style="color: red;"></i> 
+      <span id="bad-count" style="color: red;">0</span>
+    </div>
+    
+    <button onclick="incrementExcellent()">Отлично</button>
+    <button onclick="incrementBad()">Плохо</button>
+    <script>
+      // Получаем сохраненные значения из localStorage или устанавливаем 0, если нет данных
+      let excellentCount = localStorage.getItem('excellentCount') ? parseInt(localStorage.getItem('excellentCount')) : 0;
+      let badCount = localStorage.getItem('badCount') ? parseInt(localStorage.getItem('badCount')) : 0;
+  
+      // Отображаем сохраненные значения
+      document.getElementById('excellent-count').textContent = excellentCount;
+      document.getElementById('bad-count').textContent = badCount;
+  
+      // Функция для увеличения счетчика "Отлично"
+      function incrementExcellent() {
+        excellentCount++;
+        document.getElementById('excellent-count').textContent = excellentCount;
+        localStorage.setItem('excellentCount', excellentCount); // Сохраняем в localStorage
+      }
+  
+      // Функция для увеличения счетчика "Плохо"
+      function incrementBad() {
+        badCount++;
+        document.getElementById('bad-count').textContent = badCount;
+        localStorage.setItem('badCount', badCount); // Сохраняем в localStorage
+      }
+    </script>
 
   
   </header>
@@ -270,73 +298,6 @@
   <footer>
     <p>© 2025 Мои проекты и разборы | iDONi</p>
   </footer>
-    <script type="module">
-      // Подключение к Supabase
-      //const SUPABASE_URL = "https://ffkkefdyevwclcjrzywg.supabase.co"; // Замените на ваш URL
-      //const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg"; // Вставьте ваш API-ключ
-      //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-      //const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-      //console.log(supabase);
-
-      //import { createClient } from '@supabase/supabase-js'
-      const supabaseUrl = 'https://ffkkefdyevwclcjrzywg.supabase.co'
-      const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZma2tlZmR5ZXZ3Y2xjanJ6eXdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MDAzMDEsImV4cCI6MjA1MTQ3NjMwMX0.oVcY-OGJ8FXE37c4X1Fjm-iFPup9on67iv3dAYGptEg"; // Вставьте ваш API-ключ
-      const supabase = createClient(supabaseUrl, supabaseKey)
-      // Функция для получения данных
-      async function fetchData() {
-        const { data, error } = await supabase
-          .from('feedback')
-          .select('*');
-  
-        if (error) {
-          console.error('Ошибка при получении данных:', error);
-          return;
-        }
-  
-        // Отображение данных
-        const goodFeedback = data.find(item => item.feedback_type === 'good');
-        const badFeedback = data.find(item => item.feedback_type === 'bad');
-        document.getElementById('good-count').innerText = goodFeedback ? goodFeedback.count : 0;
-        document.getElementById('bad-count').innerText = badFeedback ? badFeedback.count : 0;
-      }
-  
-      // Функция для обновления данных
-      async function updateFeedback(type) {
-        // Получаем текущий счётчик
-        const { data: existingData, error: fetchError } = await supabase
-          .from('feedback')
-          .select('*')
-          .eq('feedback_type', type)
-          .single();
-  
-        if (fetchError) {
-          console.error('Ошибка при получении текущего значения:', fetchError);
-          return;
-        }
-  
-        // Увеличиваем счётчик
-        const currentCount = existingData ? existingData.count : 0;
-        const newCount = currentCount + 1;
-  
-        // Обновляем или вставляем запись
-        const { error: updateError } = await supabase
-          .from('feedback')
-          .upsert({ feedback_type: type, count: newCount });
-  
-        if (updateError) {
-          console.error('Ошибка при обновлении данных:', updateError);
-          return;
-        }
-  
-        fetchData(); // Обновить данные на странице
-      }
-  
-      // События кнопок
-      document.getElementById('good').addEventListener('click', () => updateFeedback('good'));
-      document.getElementById('bad').addEventListener('click', () => updateFeedback('bad'));
-  
-      // Загрузка данных при открытии страницы
-      fetchData();
-    </script>
+    
 </body>
 </html>
