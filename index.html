@@ -298,6 +298,29 @@
   <footer>
     <p>© 2025 Мои проекты и разборы | iDONi</p>
   </footer>
-    
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNrRpLdb-keG_xtyV8mwroPE3yah4KuxY",
+      authDomain: "idoni-b0bdd.firebaseapp.com",
+      databaseURL: "https://idoni-b0bdd-default-rtdb.firebaseio.com",
+      projectId: "idoni-b0bdd",
+      storageBucket: "idoni-b0bdd.firebasestorage.app",
+      messagingSenderId: "184347715623",
+      appId: "1:184347715623:web:411a8c343d32baf30f4602",
+      measurementId: "G-MX0QG4V6EW"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </body>
 </html>
