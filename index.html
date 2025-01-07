@@ -274,11 +274,11 @@
             <textarea id="message" name="message" rows="4" required></textarea>
             <button type="submit">Отправить</button>
         </form> -->
-        <form id="contactForm">
-          <input type="text" id="name" placeholder="Ваше имя" required>
-          <input type="email" id="email" placeholder="Ваш email" required>
-          <textarea id="message" placeholder="Ваше сообщение" required></textarea>
-          <button type="submit">Отправить</button>
+        <form id="contact-form">
+          <input type="text" id="name" placeholder="Enter your name" required>
+          <input type="email" id="email" placeholder="Enter your email" required>
+          <textarea id="message" placeholder="Enter your message" required></textarea>
+          <button type="submit">Submit</button>
         </form>
     </div>
     
@@ -332,25 +332,46 @@
     const analytics = getAnalytics(app);
   </script>
   <script>
-    const database = firebase.database();
-  
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Подключаем Firebase
+    import { initializeApp } from "firebase/app";
+    import { getFirestore, collection, addDoc } from "firebase/firestore";
+    
+    // Конфигурация Firebase
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    
+    // Инициализация Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    // Обработчик формы
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-  
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-  
-      database.ref('messages').push({
-        name: name,
-        email: email,
-        message: message
-      }).then(() => {
-        alert('Сообщение отправлено!');
-      }).catch((error) => {
-        console.error('Ошибка отправки: ', error);
-      });
+    
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+    
+      try {
+        // Добавляем данные в Firestore
+        await addDoc(collection(db, "messages"), {
+          name: name,
+          email: email,
+          message: message,
+          timestamp: new Date(),
+        });
+        alert("Message sent successfully!");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     });
-  </script>
+    </script>
 </body>
 </html>
