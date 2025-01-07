@@ -265,36 +265,18 @@
      
     <div class="form-container">
         <h1><i class="fas fa-comment-dots"></i> Форма обратной связи</h1>
-<!--         <form action="https://formspree.io/f/xnnnopnr" method="POST">
-            <label for="name">Ваше <b> имя:</b></label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Ваш email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Ваше <b> сообщение:</b></label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit">Отправить</button>
-        </form> -->
-<!--         <form id="contact-form">
-          <input type="text" id="name" placeholder="Enter your name" required>
-          <input type="email" id="email" placeholder="Enter your email" required>
-          <textarea id="message" placeholder="Enter your message" required></textarea>
-          <button type="submit">Submit</button>
-        </form> -->
-      <form
-        action="https://formspree.io/f/xnnnopnr"
-        method="POST"
-      >
-        <label>
-          Your email:
-          <input type="email" name="email">
-        </label>
-        <label>
-          Your message:
-          <textarea name="message"></textarea>
-        </label>
-        <!-- your other form fields go here -->
-        <button type="submit">Send</button>
-      </form>
+        <form id="feedbackForm">
+          <label for="name">Имя:</label>
+          <input type="text" id="name" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" required>
+          
+          <label for="message">Сообщение:</label>
+          <textarea id="message" required></textarea>
+          
+          <button type="submit">Отправить</button>
+        </form>
     </div>
     
     <div class="telegram-container">
@@ -322,71 +304,6 @@
   <footer>
     <p>© 2025 Мои проекты и разборы | iDONi</p>
   </footer>
-<!--   <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyCNrRpLdb-keG_xtyV8mwroPE3yah4KuxY",
-      authDomain: "idoni-b0bdd.firebaseapp.com",
-      databaseURL: "https://idoni-b0bdd-default-rtdb.firebaseio.com",
-      projectId: "idoni-b0bdd",
-      storageBucket: "idoni-b0bdd.firebasestorage.app",
-      messagingSenderId: "184347715623",
-      appId: "1:184347715623:web:411a8c343d32baf30f4602",
-      measurementId: "G-MX0QG4V6EW"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-  <script>
-    // Подключаем Firebase
-    import { initializeApp } from "firebase/app";
-    import { getFirestore, collection, addDoc } from "firebase/firestore";
-    
-    // Конфигурация Firebase
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    
-    // Инициализация Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    
-    // Обработчик формы
-    const form = document.getElementById("contact-form");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-    
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-    
-      try {
-        // Добавляем данные в Firestore
-        await addDoc(collection(db, "messages"), {
-          name: name,
-          email: email,
-          message: message,
-          timestamp: new Date(),
-        });
-        alert("Message sent successfully!");
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
-    });
-    </script> -->
+  <script src="telegram-feedback.js"></script>
 </body>
 </html>
