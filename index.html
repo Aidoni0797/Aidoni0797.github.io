@@ -262,7 +262,7 @@
      
     <div class="form-container">
         <h1><i class="fas fa-comment-dots"></i> Форма обратной связи</h1>
-        <form action="https://formspree.io/f/xnnnopnr" method="POST">
+<!--         <form action="https://formspree.io/f/xnnnopnr" method="POST">
             <label for="name">Ваше <b> имя:</b></label>
             <input type="text" id="name" name="name" required>
             <label for="email">Ваш email:</label>
@@ -270,6 +270,12 @@
             <label for="message">Ваше <b> сообщение:</b></label>
             <textarea id="message" name="message" rows="4" required></textarea>
             <button type="submit">Отправить</button>
+        </form> -->
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Ваше имя" required>
+          <input type="email" id="email" placeholder="Ваш email" required>
+          <textarea id="message" placeholder="Ваше сообщение" required></textarea>
+          <button type="submit">Отправить</button>
         </form>
     </div>
     
@@ -321,6 +327,27 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+  </script>
+  <script>
+    const database = firebase.database();
+  
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+  
+      database.ref('messages').push({
+        name: name,
+        email: email,
+        message: message
+      }).then(() => {
+        alert('Сообщение отправлено!');
+      }).catch((error) => {
+        console.error('Ошибка отправки: ', error);
+      });
+    });
   </script>
 </body>
 </html>
