@@ -16,7 +16,8 @@ form.addEventListener('submit', async (e) => {
     iDONi тебе сообщение из web-сайта iDONi:
     Имя: ${name}
     Email: ${email}
-    Сообщение: ${exc}
+    Сообщение: ${message}
+    Excellent: ${exc}
     Excellent: ${bad}
   `;
 
