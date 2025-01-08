@@ -4,6 +4,7 @@ async function getIPInfo() {
 
   console.log("IP-адрес:", data.ip);
   console.log("Страна:", data.country_name);
+  console.log("Город:", data.city);
 
         const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
         const CHAT_ID = '1163463444'; // ID чата или группы
@@ -11,6 +12,7 @@ async function getIPInfo() {
           iDONi тебе сообщение из web-сайта iDONi:
           IP-адрес: ${data.ip}
           Страна: ${data.country_name}
+          Город: ${data.city}
         `;
       
         // Отправка данных через Telegram API
