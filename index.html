@@ -227,23 +227,6 @@
       
         // Отправка данных через Telegram API
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        
-        try {
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
-          });
-      
-          if (response.ok) {
-            alert('Сообщение успешно отправлено!');
-            form.reset(); // Сбросить форму
-          } else {
-            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
-          }
-        } catch (error) {
-          alert('Произошла ошибка: ' + error.message);
-        }
       }
   
       // Функция для увеличения счетчика "Плохо"
