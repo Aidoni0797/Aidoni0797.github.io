@@ -7,15 +7,17 @@ form.addEventListener('submit', async (e) => {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const message = document.getElementById('message').value;
-
+  const exc = document.getElementById('excellent-count').textContent = excellentCount;
+  const bad = document.getElementById('bad-count').textContent = badCount;
   // Данные Telegram
   const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
   const CHAT_ID = '1163463444'; // ID чата или группы
   const TEXT = `
-    Новое сообщение из формы обратной связи:
+    iDONi тебе сообщение из web-сайта iDONi:
     Имя: ${name}
     Email: ${email}
-    Сообщение: ${message}
+    Сообщение: ${exc}
+    Excellent: ${bad}
   `;
 
   // Отправка данных через Telegram API
