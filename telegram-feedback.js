@@ -32,7 +32,6 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      alert('Сообщение успешно отправлено!');
       form.reset(); // Сбросить форму
     } else {
       alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
