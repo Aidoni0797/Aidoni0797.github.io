@@ -17,8 +17,8 @@ form.addEventListener('submit', async (e) => {
     Имя: ${name}
     Email: ${email}
     Сообщение: ${message}
-    Excellent: ${exc}
-    Excellent: ${bad}
+    Отлично: ${exc}
+    Плохо: ${bad}
   `;
 
   // Отправка данных через Telegram API
