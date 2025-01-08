@@ -1,3 +1,3 @@
 Please visit my website, and I will be happy to check its functionality.
-[![iDONi](https://aidoni0797.github.io/iDONi.ico)]([https://aidoni0797.github.io/])
+https://aidoni0797.github.io/
 Best regards, iDONi...
