@@ -13,10 +13,7 @@ if ("geolocation" in navigator) {
         console.log("Точность: " + accuracy + " метров");
 
         // Находим элемент на странице и вставляем туда информацию
-        document.getElementById("location-info").innerHTML = 
-        "Широта: " + latitude + "<br>" +
-        "Долгота: " + longitude + "<br>" +
-        "Точность: " + accuracy + " метров";
+        document.getElementById("location-info").innerHTML = "Широта: " + latitude + "<br>" + "Долгота: " + longitude + "<br>" + "Точность: " + accuracy + " метров";
 
         // Дополнительно можно использовать эти данные для отображения карты или других целей
     }, function(error) {
