@@ -1,7 +1,7 @@
 async function getIPInfo() {
   const response = await fetch("https://ipapi.co/json/");
   const data = await response.json();
-  const location = document.getElementById("location-info").textContent;
+  const location = await document.getElementById("location-info").textContent;
   console.log("IP-адрес:", data.ip);
   console.log("Страна:", data.country_name);
   console.log("Город:", data.city);
