@@ -9,6 +9,7 @@ form.addEventListener('submit', async (e) => {
   const message = document.getElementById('message').value;
   const exc = document.getElementById('excellent-count').textContent = excellentCount;
   const bad = document.getElementById('bad-count').textContent = badCount;
+  const location = document.getElementById("location-info").value;
   // Данные Telegram
   const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
   const CHAT_ID = '1163463444'; // ID чата или группы
@@ -19,6 +20,7 @@ form.addEventListener('submit', async (e) => {
     Сообщение: ${message}
     Отлично: ${exc}
     Плохо: ${bad}
+    Геолокация: ${location}
   `;
 
   // Отправка данных через Telegram API
