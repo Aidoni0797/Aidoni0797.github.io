@@ -183,6 +183,33 @@
         transform: translateX(-100%);
       }
     }
+    .auth-link {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none; /* Убираем подчеркивание */
+        border-radius: 5px; /* Округлые углы */
+        font-size: 16px;
+        text-align: center;
+        margin-right: 10px; /* Расстояние между кнопками */
+        transition: background-color 0.3s ease;
+    }
+
+    .login-link {
+        background-color: #4CAF50; /* Зеленый для авторизации */
+    }
+
+    .login-link:hover {
+        background-color: #45a049; /* Более темный зеленый при наведении */
+    }
+
+    .register-link {
+        background-color: #008CBA; /* Голубой для регистрации */
+    }
+
+    .register-link:hover {
+        background-color: #007B9E; /* Темно-голубой при наведении */
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KY8X0BXQ5"></script>
@@ -196,6 +223,9 @@
 </head>
 <body>
   <header>
+    <a href="#login" class="auth-link login-link">Авторизация</a>
+    <a href="#register" class="auth-link register-link">Регистрация</a>
+    <br>
     <img src="12.png" alt="iDONi Logo" class="logo">
     <h1 style="color:#1E90FF;">Добро пожаловать на web-сайт iDONi</h1>
     <br>
