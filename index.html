@@ -354,6 +354,33 @@
         <p>Долгота: <span id="longitude">...</span></p>
         <p>Точность: <span id="accuracy">...</span> метров</p>
     </div>
+
+    <br>
+
+    <h3>Your Location on the Map</h3>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+
+                // Создание карты
+                var map = L.map('map').setView([lat, lon], 15);
+
+                // Подключаем OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+                // Добавляем маркер
+                var marker = L.marker([lat, lon]).addTo(map);
+                marker.bindPopup("<b>Your Location</b><br>Latitude: " + lat + "<br>Longitude: " + lon).openPopup();
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    </script>
     <hr>
     
     <h2><i class="fas fa-address-book icon"></i> Контакты</h2>
