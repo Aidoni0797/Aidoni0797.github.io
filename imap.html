@@ -25,15 +25,25 @@
     <script src="https://unpkg.com/esri-leaflet@2.3.2/dist/esri-leaflet.js"></script>
 
     <script>
-        var map = L.map('map').setView([50.4189, 80.2548], 12); 
-
-        // Добавляем слой OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-        // Добавляем маркер
-        L.marker([50.4189, 80.2548]).addTo(map)
-            .bindPopup("Это ты")
-            .openPopup();
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var latitude = position.coords.latitude;  // Широта
+            var longitude = position.coords.longitude;  // Долгота
+            
+            // Создание карты, центрированной на полученных координатах
+            var map = L.map('map').setView([latitude, longitude], 13);
+            
+            // Добавляем слой OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Добавляем маркер на место, где находится пользователь
+            L.marker([latitude, longitude]).addTo(map)
+                .bindPopup("Вы находитесь здесь!")
+                .openPopup();
+        }, function(error) {
+            console.error("Ошибка геолокации: " + error.message);
+        });
     </script>
 </body>
 </html>
