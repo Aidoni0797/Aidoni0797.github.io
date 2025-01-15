@@ -1,18 +1,335 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизация</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iDONi</title>
+  <link rel="icon" href="iDONi.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Подключаем Font Awesome для иконок -->
+  <style>
+    body {
+      font-family: 'Fredoka One', cursive;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+    .logo {
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+    }
+    header h1 {
+      margin-top: 1rem;
+      color: #003366; 
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      color: #333;
+    }
+    /* Стили для контейнера Telegram */
+    .telegram-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    .telegram-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .qr-code img {
+        width: 150px; /* Размер изображения QR-кода */
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container a {
+        font-size: 16px;
+        color: #0088cc;
+        text-decoration: none;
+    }
+    
+    .telegram-container a:hover {
+        text-decoration: underline;
+    }
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    h1, h2 {
+      color: #1E90FF;
+    }
+    p {
+      line-height: 1.8;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1E90FF;
+      color: #ffffff;
+      margin-top: 2rem;
+    }
+    a {
+      color: #1E90FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    input, textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #1E90FF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Fredoka One', cursive;
+    }
+    
+    button:hover {
+        background-color: #1E90FF;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 0.5rem 0;
+    }
+    ul li::before {
+      content: "\1F42C"; /* Дельфин 🐬 */
+      margin-right: 0.5rem;
+    }
+    
+    .slider-container {
+      width: 100%;
+      overflow: hidden; /* Обрезаем элементы, которые выходят за пределы */
+      padding: 20px;
+    }
+
+    .slider {
+      display: flex;
+      animation: slide 10s infinite linear; /* Анимация слайдера */
+    }
+
+    .slider i {
+      font-size: 80px; /* Увеличиваем размер иконок */
+      margin: 0 30px; /* Увеличиваем отступы между иконками */
+      color: #1E90FF;
+    }
+
+    .rating-container {
+      align-items: center;
+      gap: 10px;
+      font-size: 30px;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .auth-link {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none; /* Убираем подчеркивание */
+        border-radius: 5px; /* Округлые углы */
+        font-size: 16px;
+        text-align: center;
+        margin-right: 10px; /* Расстояние между кнопками */
+        transition: background-color 0.3s ease;
+    }
+
+    .login-link {
+        background-color: #4CAF50; /* Зеленый для авторизации */
+    }
+
+    .login-link:hover {
+        background-color: #45a049; /* Более темный зеленый при наведении */
+    }
+
+    .register-link {
+        background-color: #008CBA; /* Голубой для регистрации */
+    }
+
+    .register-link:hover {
+        background-color: #007B9E; /* Темно-голубой при наведении */
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KY8X0BXQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-7KY8X0BXQ5');
+  </script>
 </head>
 <body>
-    <h2>Авторизация</h2>
-    <form action="/submit_login" method="POST">
-        <label for="username">Логин:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <button type="submit">Войти</button>
-    </form>
+  <header>
+
+    <img src="12.png" alt="iDONi Logo" class="logo">
+    <h1 style="color:#1E90FF;">Добро пожаловать на web-сайт iDONi</h1>
+    <br>
+    <div class="rating-container">
+      <i class="fas fa-star" id="excellent-icon" style="color: green;"></i> 
+      <span id="excellent-count" style="color: green;">0</span>
+  
+      <i class="fas fa-star" id="bad-icon" style="color: red;"></i> 
+      <span id="bad-count" style="color: red;">0</span>
+    </div>
+    
+    <button onclick="incrementExcellent()">Отлично</button>
+    <button onclick="incrementBad()">Плохо</button>
+    <script>
+      // Получаем сохраненные значения из localStorage или устанавливаем 0, если нет данных
+      let excellentCount = localStorage.getItem('excellentCount') ? parseInt(localStorage.getItem('excellentCount')) : 0;
+      let badCount = localStorage.getItem('badCount') ? parseInt(localStorage.getItem('badCount')) : 0;
+  
+      // Отображаем сохраненные значения
+      document.getElementById('excellent-count').textContent = excellentCount;
+      document.getElementById('bad-count').textContent = badCount;
+  
+      // Функция для увеличения счетчика "Отлично"
+      function incrementExcellent() {
+        excellentCount++;
+        document.getElementById('excellent-count').textContent = excellentCount;
+        localStorage.setItem('excellentCount', excellentCount); // Сохраняем в localStorage
+        const exc = document.getElementById('excellent-count').textContent = excellentCount;
+        // Данные Telegram
+        const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
+        const CHAT_ID = '1163463444'; // ID чата или группы
+        const TEXT = `
+          iDONi тебе сообщение из web-сайта iDONi:
+          Отлично: ${exc}
+        `;
+      
+        // Отправка данных через Telegram API
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
+        })
+        .then((response) => {
+          if (response.ok) {
+            form.reset(); // Сбросить форму
+          } else {
+            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
+          }
+        })
+        .catch((error) => {
+          alert('Произошла ошибка: ' + error.message);
+        });
+      }
+  
+      // Функция для увеличения счетчика "Плохо"
+      function incrementBad() {
+        badCount++;
+        document.getElementById('bad-count').textContent = badCount;
+        localStorage.setItem('badCount', badCount); // Сохраняем в localStorage
+        const bad = document.getElementById('bad-count').textContent = badCount;
+        // Данные Telegram
+        const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
+        const CHAT_ID = '1163463444'; // ID чата или группы
+        const TEXT = `
+          iDONi тебе сообщение из web-сайта iDONi:
+          Плохо: ${bad}
+        `;
+      
+        // Отправка данных через Telegram API
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
+        })
+        .then((response) => {
+          if (response.ok) {
+            form.reset(); // Сбросить форму
+          } else {
+            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
+          }
+        })
+        .catch((error) => {
+          alert('Произошла ошибка: ' + error.message);
+        });
+      }
+    </script>
+  </header>
+  <main>
+         <h2>Авторизация</h2>
+        <form action="/submit_login" method="POST">
+            <label for="username">Логин:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit">Войти</button>
+        </form>
+  </main>
+  <footer>
+    <p>© 2025 Мои проекты и разборы | iDONi</p>
+  </footer>
+  <script src="telegram-feedback.js"></script>
+  <script src="geo.js"></script>
+  <script src="ipapi.js"></script>
 </body>
 </html>
+
+
