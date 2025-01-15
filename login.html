@@ -225,93 +225,9 @@
   <header>
 
     <img src="12.png" alt="iDONi Logo" class="logo">
-    <h1 style="color:#1E90FF;">Добро пожаловать на web-сайт iDONi</h1>
+    <h1 style="color:#1E90FF;">web-сайт iDONi</h1>
     <br>
-    <div class="rating-container">
-      <i class="fas fa-star" id="excellent-icon" style="color: green;"></i> 
-      <span id="excellent-count" style="color: green;">0</span>
-  
-      <i class="fas fa-star" id="bad-icon" style="color: red;"></i> 
-      <span id="bad-count" style="color: red;">0</span>
-    </div>
     
-    <button onclick="incrementExcellent()">Отлично</button>
-    <button onclick="incrementBad()">Плохо</button>
-    <script>
-      // Получаем сохраненные значения из localStorage или устанавливаем 0, если нет данных
-      let excellentCount = localStorage.getItem('excellentCount') ? parseInt(localStorage.getItem('excellentCount')) : 0;
-      let badCount = localStorage.getItem('badCount') ? parseInt(localStorage.getItem('badCount')) : 0;
-  
-      // Отображаем сохраненные значения
-      document.getElementById('excellent-count').textContent = excellentCount;
-      document.getElementById('bad-count').textContent = badCount;
-  
-      // Функция для увеличения счетчика "Отлично"
-      function incrementExcellent() {
-        excellentCount++;
-        document.getElementById('excellent-count').textContent = excellentCount;
-        localStorage.setItem('excellentCount', excellentCount); // Сохраняем в localStorage
-        const exc = document.getElementById('excellent-count').textContent = excellentCount;
-        // Данные Telegram
-        const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
-        const CHAT_ID = '1163463444'; // ID чата или группы
-        const TEXT = `
-          iDONi тебе сообщение из web-сайта iDONi:
-          Отлично: ${exc}
-        `;
-      
-        // Отправка данных через Telegram API
-        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
-        })
-        .then((response) => {
-          if (response.ok) {
-            form.reset(); // Сбросить форму
-          } else {
-            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
-          }
-        })
-        .catch((error) => {
-          alert('Произошла ошибка: ' + error.message);
-        });
-      }
-  
-      // Функция для увеличения счетчика "Плохо"
-      function incrementBad() {
-        badCount++;
-        document.getElementById('bad-count').textContent = badCount;
-        localStorage.setItem('badCount', badCount); // Сохраняем в localStorage
-        const bad = document.getElementById('bad-count').textContent = badCount;
-        // Данные Telegram
-        const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
-        const CHAT_ID = '1163463444'; // ID чата или группы
-        const TEXT = `
-          iDONi тебе сообщение из web-сайта iDONi:
-          Плохо: ${bad}
-        `;
-      
-        // Отправка данных через Telegram API
-        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
-        })
-        .then((response) => {
-          if (response.ok) {
-            form.reset(); // Сбросить форму
-          } else {
-            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
-          }
-        })
-        .catch((error) => {
-          alert('Произошла ошибка: ' + error.message);
-        });
-      }
-    </script>
   </header>
   <main>
          <h2>Авторизация</h2>
