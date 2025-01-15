@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iDONi</title>
+  <link rel="icon" href="iDONi.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Подключаем Font Awesome для иконок -->
+  <style>
+    body {
+      font-family: 'Fredoka One', cursive;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+    .logo {
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+    }
+    header h1 {
+      margin-top: 1rem;
+      color: #003366; 
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      color: #333;
+    }
+    /* Стили для контейнера Telegram */
+    .telegram-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    .telegram-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .qr-code img {
+        width: 150px; /* Размер изображения QR-кода */
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container a {
+        font-size: 16px;
+        color: #0088cc;
+        text-decoration: none;
+    }
+    
+    .telegram-container a:hover {
+        text-decoration: underline;
+    }
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    h1, h2 {
+      color: #1E90FF;
+    }
+    p {
+      line-height: 1.8;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1E90FF;
+      color: #ffffff;
+      margin-top: 2rem;
+    }
+    a {
+      color: #1E90FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    input, textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #1E90FF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Fredoka One', cursive;
+    }
+    
+    button:hover {
+        background-color: #1E90FF;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 0.5rem 0;
+    }
+    ul li::before {
+      content: "\1F42C"; /* Дельфин 🐬 */
+      margin-right: 0.5rem;
+    }
+    
+    .slider-container {
+      width: 100%;
+      overflow: hidden; /* Обрезаем элементы, которые выходят за пределы */
+      padding: 20px;
+    }
+
+    .slider {
+      display: flex;
+      animation: slide 10s infinite linear; /* Анимация слайдера */
+    }
+
+    .slider i {
+      font-size: 80px; /* Увеличиваем размер иконок */
+      margin: 0 30px; /* Увеличиваем отступы между иконками */
+      color: #1E90FF;
+    }
+
+    .rating-container {
+      align-items: center;
+      gap: 10px;
+      font-size: 30px;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .auth-link {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none; /* Убираем подчеркивание */
+        border-radius: 5px; /* Округлые углы */
+        font-size: 16px;
+        text-align: center;
+        margin-right: 10px; /* Расстояние между кнопками */
+        transition: background-color 0.3s ease;
+    }
+
+    .login-link {
+        background-color: #4CAF50; /* Зеленый для авторизации */
+    }
+
+    .login-link:hover {
+        background-color: #45a049; /* Более темный зеленый при наведении */
+    }
+
+    .register-link {
+        background-color: #008CBA; /* Голубой для регистрации */
+    }
+
+    .register-link:hover {
+        background-color: #007B9E; /* Темно-голубой при наведении */
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KY8X0BXQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-7KY8X0BXQ5');
+  </script>
+</head>
+<body>
+  <header>
+
+    <img src="12.png" alt="iDONi Logo" class="logo">
+    <h1 style="color:#1E90FF;">web-сайт iDONi</h1>
+    <hr style="border: 3px dashed #1E90FF; width: 50%; margin: 20px auto;">
+  </header>
+  <main>
+      <div class="form-container">
+        <h2>Регистрация</h2>
+        <form action="registration_process.html" method="POST">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Подтвердите пароль:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+      </div>
+  </main>
+  <footer>
+    <p>© 2025 Мои проекты и разборы | iDONi</p>
+  </footer>
+  <script src="telegram-feedback.js"></script>
+  <script src="geo.js"></script>
+  <script src="ipapi.js"></script>
+</body>
+</html>
+
