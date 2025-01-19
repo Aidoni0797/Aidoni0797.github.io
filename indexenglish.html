@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iDONi</title>
+  <link rel="icon" href="iDONi.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Подключаем Font Awesome для иконок -->
+  <style>
+    body {
+      font-family: 'Fredoka One', cursive;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+    .logo {
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+    }
+    header h1 {
+      margin-top: 1rem;
+      color: #003366; 
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      color: #333;
+    }
+    /* Стили для контейнера Telegram */
+    .telegram-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    .telegram-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .qr-code img {
+        width: 150px; /* Размер изображения QR-кода */
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container a {
+        font-size: 16px;
+        color: #0088cc;
+        text-decoration: none;
+    }
+    
+    .telegram-container a:hover {
+        text-decoration: underline;
+    }
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    h1, h2 {
+      color: #1E90FF;
+    }
+    p {
+      line-height: 1.8;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1E90FF;
+      color: #ffffff;
+      margin-top: 2rem;
+    }
+    a {
+      color: #1E90FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    input, textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #1E90FF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Fredoka One', cursive;
+    }
+    
+    button:hover {
+        background-color: #1E90FF;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 0.5rem 0;
+    }
+    ul li::before {
+      content: "\1F42C"; /* Дельфин 🐬 */
+      margin-right: 0.5rem;
+    }
+    
+    .slider-container {
+      width: 100%;
+      overflow: hidden; /* Обрезаем элементы, которые выходят за пределы */
+      padding: 20px;
+    }
+
+    .slider {
+      display: flex;
+      animation: slide 10s infinite linear; /* Анимация слайдера */
+    }
+
+    .slider i {
+      font-size: 80px; /* Увеличиваем размер иконок */
+      margin: 0 30px; /* Увеличиваем отступы между иконками */
+      color: #1E90FF;
+    }
+
+    .rating-container {
+      align-items: center;
+      gap: 10px;
+      font-size: 30px;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .auth-link {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none; /* Убираем подчеркивание */
+        border-radius: 5px; /* Округлые углы */
+        font-size: 16px;
+        text-align: center;
+        margin-right: 10px; /* Расстояние между кнопками */
+        transition: background-color 0.3s ease;
+    }
+
+    .login-link {
+        background-color: #4CAF50; /* Зеленый для авторизации */
+    }
+
+    .login-link:hover {
+        background-color: #45a049; /* Более темный зеленый при наведении */
+    }
+
+    .register-link {
+        background-color: #008CBA; /* Голубой для регистрации */
+    }
+
+    .register-link:hover {
+        background-color: #007B9E; /* Темно-голубой при наведении */
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KY8X0BXQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-7KY8X0BXQ5');
+  </script>
+</head>
+<body>
+  <header>
+    <a href="login.html" class="auth-link login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="register.html" class="auth-link register-link"><i class="fas fa-user-plus"></i> Sign up</a>
+    <br>
+    <img src="12.png" alt="iDONi Logo" class="logo">
+    <h1 style="color:#1E90FF;">Welcome to the iDONi website</h1>
+    <br>
+    <div class="rating-container">
+      <i class="fas fa-star" id="excellent-icon" style="color: green;"></i> 
+      <span id="excellent-count" style="color: green;">0</span>
+  
+      <i class="fas fa-star" id="bad-icon" style="color: red;"></i> 
+      <span id="bad-count" style="color: red;">0</span>
+    </div>
+    
+    <button onclick="incrementExcellent()">Great</button>
+    <button onclick="incrementBad()">Badly</button>
+    <script>
+      // Получаем сохраненные значения из localStorage или устанавливаем 0, если нет данных
+      let excellentCount = localStorage.getItem('excellentCount') ? parseInt(localStorage.getItem('excellentCount')) : 0;
+      let badCount = localStorage.getItem('badCount') ? parseInt(localStorage.getItem('badCount')) : 0;
+  
+      // Отображаем сохраненные значения
+      document.getElementById('excellent-count').textContent = excellentCount;
+      document.getElementById('bad-count').textContent = badCount;
+  
+      // Функция для увеличения счетчика "Отлично"
+      function incrementExcellent() {
+        excellentCount++;
+        document.getElementById('excellent-count').textContent = excellentCount;
+        localStorage.setItem('excellentCount', excellentCount); // Сохраняем в localStorage
+        const exc = document.getElementById('excellent-count').textContent = excellentCount;
+        // Данные Telegram
+        const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
+        const CHAT_ID = '1163463444'; // ID чата или группы
+        const TEXT = `
+          iDONi тебе сообщение из web-сайта iDONi:
+          Отлично: ${exc}
+        `;
+      
+        // Отправка данных через Telegram API
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
+        })
+        .then((response) => {
+          if (response.ok) {
+            form.reset(); // Сбросить форму
+          } else {
+            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
+          }
+        })
+        .catch((error) => {
+          alert('Произошла ошибка: ' + error.message);
+        });
+      }
+  
+      // Функция для увеличения счетчика "Плохо"
+      function incrementBad() {
+        badCount++;
+        document.getElementById('bad-count').textContent = badCount;
+        localStorage.setItem('badCount', badCount); // Сохраняем в localStorage
+        const bad = document.getElementById('bad-count').textContent = badCount;
+        // Данные Telegram
+        const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
+        const CHAT_ID = '1163463444'; // ID чата или группы
+        const TEXT = `
+          iDONi тебе сообщение из web-сайта iDONi:
+          Плохо: ${bad}
+        `;
+      
+        // Отправка данных через Telegram API
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
+        })
+        .then((response) => {
+          if (response.ok) {
+            form.reset(); // Сбросить форму
+          } else {
+            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
+          }
+        })
+        .catch((error) => {
+          alert('Произошла ошибка: ' + error.message);
+        });
+      }
+    </script>
+
+  
+  </header>
+  <main>
+    <h2><i class="fas fa-user icon"></i> Обо мне</h2>
+    <ul>
+      <li>
+        Hi! I am interested in programming and create projects. Here I post my projects and share my analysis of tasks.
+      </li>
+    </ul>
+    <h2><i class="fas fa-code icon"></i> Problem solving</h2>
+    <ul>
+      <li>My solutions to problems using the <a href="https://github.com/Aidoni0797/aiDoni_learn_playwright" target="_blank">Playwright</a> framework for automating web application testing.</li>
+      <li>My solutions to problems using the <a href="https://github.com/Aidoni0797/i_learn_Selenium" target="_blank">Selenium</a> framework for test automation</li>
+      <li>My problem solutions are in the <a href="https://github.com/Aidoni0797/iDONi_learn_Go" target="_blank">Go.</a>programming language.</li>
+      <li>My problem solutions are in the <a href="https://github.com/Aidoni0797/iDONi_and_JAVA" target="_blank">Java.</a>programming language.</li> (Sometimes I wonder why I need it if I don't use it in practice. Bari zhaksy bolsyn.)
+      <li>I rarely participate in internships that don't bring meaningful <a href="https://github.com/Aidoni0797/internship_first_task" target="_blank">results.</a> (it hurts)</li>
+    </ul>
+
+    <h1 style="text-align: center; margin-top: 20px;">My projects</h1>
+    <div class="container">
+      <!-- Карточка проекта -->
+      <div class="card">
+        <img src="ne.jpg" alt="Project 1" style="width:150px; height:150px;">
+        <div class="card-content">
+          <h2 class="card-title">Project 1: Weather App</h2>
+          <p class="card-description">An application for obtaining weather information using the OpenWeatherMap API.</p>
+          <a href="https://github.com/Aidoni0797/iDONi_and_Go_project" class="card-link" target="_blank" style="padding: 10px;
+        background-color: #1E90FF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Fredoka One', cursive;">View the project</a>
+        </div>
+      </div>
+      <!-- Карточка проекта -->
+
+      <!-- Добавьте больше карточек по мере необходимости -->
+    </div>
+    
+    <br>
+    <hr>
+    <br>
+    
+    <div class="slider-container">
+      <div class="slider">
+        <i class="fab fa-github"></i>
+        <i class="fab fa-python"></i>
+        <i class="fab fa-golang"></i>
+        <i class="fab fa-js-square"></i>
+        <i class="fas fa-cogs"></i> 
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-gitlab"></i>
+        <i class="fas fa-code"></i>
+        <i class="fas fa-terminal"></i>
+        <i class="fas fa-laptop-code"></i>
+        <i class="fas fa-server"></i>
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+     
+    <div class="form-container">
+        <h1><i class="fas fa-comment-dots"></i> Feedback form</h1>
+        <form id="feedbackForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" required>
+          
+          <label for="message">Message:</label>
+          <textarea id="message" required></textarea>
+          
+          <button type="submit">Send</button>
+        </form>
+    </div>
+    
+    <div class="telegram-container">
+        <h2><i class="fab fa-telegram"></i> Subscribe to my Telegram channel!</h2>
+        <p>Scan the QR code to go to the channel and subscribe.:</p>
+        <div class="qr-code">
+            <!-- Вставьте ваш QR-код, заменив путь на свой файл -->
+            <img src="qrcode.jpg" alt="QR-код на Telegram-канал">
+        </div>
+        <p><a href="https://t.me/iDONi_python" target="_blank">Go to the channel</a></p>
+    </div>
+    
+    <hr>
+    <h1>Geolocation of your device</h1>
+    <div id="location-info">
+        <p>Width: <span id="latitude">...</span></p>
+        <p>Longitude: <span id="longitude">...</span></p>
+        <p>Accuracy: <span id="accuracy">...</span> meters</p>
+        
+    </div>
+    <br>
+    <a href="imap.html" style="display: inline-block; padding: 10px 20px; background-color: #1E90FF; color: white; text-align: center; text-decoration: none; border-radius: 5px;"><i class="fas fa-location-arrow"></i> Open a card</a>
+    <hr>
+    
+    <h2><i class="fas fa-address-book icon"></i> Contacts</h2>
+    <ul>
+      <li><a href="mailto:a19071997@mail.ru" title="Email" style="color: black;"><i class="fas fa-envelope"></i></a>
+      <a href="https://t.me/iDONi97" title="Telegram" style="color: black;"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.instagram.com/python_developer_idoni/" title="Instagram" style="color: black;"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/Aidoni0797" title="GitHub" style="color: black;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ai-doni-102a7b308" title="LinkedIn" style="color: black;"><i class="fab fa-linkedin"></i></a>
+      <a href="https://discord.com/users/aidoni0797" title="Discord" style="color: black;"><i class="fab fa-discord"></i></a>
+      <a href="https://leetcode.com/u/iDONi97/" title="LeetCode" style="color: black;"><i class="fas fa-code"></i></a>
+      <a href="https://stepik.org/users/101181330/profile" title="Stepik" style="color: black;"><i class="fas fa-graduation-cap"></i></a></li>
+    </ul>
+  </main>
+  <footer>
+    <p>© 2025 My projects and reviews | iDONi</p>
+  </footer>
+  <script src="telegram-feedback.js"></script>
+  <script src="geo.js"></script>
+  <script src="ipapi.js"></script>
+</body>
+</html>
