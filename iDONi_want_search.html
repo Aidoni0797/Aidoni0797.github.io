@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .result {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Type to search..." oninput="filterResults()">
+    </div>
+    <div id="results">
+        <!-- Примеры контента -->
+        <div class="result">Learn JavaScript Basics</div>
+        <div class="result">Getting Started with GitHub Pages</div>
+        <div class="result">How to Use Python for Web Development</div>
+        <div class="result">Understanding HTML and CSS</div>
+        <div class="result">Guide to Building REST APIs</div>
+    </div>
+
+    <script>
+        function filterResults() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const results = document.querySelectorAll(".result");
+
+            results.forEach(result => {
+                const text = result.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    result.classList.remove("hidden");
+                } else {
+                    result.classList.add("hidden");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
