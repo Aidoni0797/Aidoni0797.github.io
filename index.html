@@ -338,6 +338,23 @@
         <div class="result">Understanding HTML and CSS</div>
         <div class="result">Guide to Building REST APIs</div>
     </div>
+
+    <script>
+        function filterResults() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const results = document.querySelectorAll(".result");
+
+            results.forEach(result => {
+                const text = result.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    result.classList.remove("hidden");
+                } else {
+                    result.classList.add("hidden");
+                }
+            });
+        }
+    </script>
+    
     <ul>
       <li>Мои решения задач с использованием фреймворка <a href="https://github.com/Aidoni0797/aiDoni_learn_playwright" target="_blank">Playwright</a> для автоматизации тестирования веб-приложений.</li>
       <li>Мои решения задач с использованием фреймворка <a href="https://github.com/Aidoni0797/i_learn_Selenium" target="_blank">Selenium</a> для автоматизации тестирования</li>
