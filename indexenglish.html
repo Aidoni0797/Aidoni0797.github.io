@@ -210,6 +210,24 @@
     .register-link:hover {
         background-color: #007B9E; /* Темно-голубой при наведении */
     }
+    .search-container {
+            margin-bottom: 20px;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .result {
+            padding: 10px;
+            border: 1px dashed #1E90FF;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KY8X0BXQ5"></script>
@@ -326,15 +344,36 @@
         Hi! I am interested in programming and create projects. Here I post my projects and share my analysis of tasks.
       </li>
     </ul>
-    <h2><i class="fas fa-code icon"></i> Problem solving</h2>
-    <ul>
-      <li>My solutions to problems using the <a href="https://github.com/Aidoni0797/aiDoni_learn_playwright" target="_blank">Playwright</a> framework for automating web application testing.</li>
-      <li>My solutions to problems using the <a href="https://github.com/Aidoni0797/i_learn_Selenium" target="_blank">Selenium</a> framework for test automation</li>
-      <li>My problem solutions are in the <a href="https://github.com/Aidoni0797/iDONi_learn_Go" target="_blank">Go.</a>programming language.</li>
-      <li>My problem solutions are in the <a href="https://github.com/Aidoni0797/iDONi_and_JAVA" target="_blank">Java.</a>programming language.</li> (Sometimes I wonder why I need it if I don't use it in practice. Bari zhaksy bolsyn.)
-      <li>I rarely participate in internships that don't bring meaningful <a href="https://github.com/Aidoni0797/internship_first_task" target="_blank">results.</a> (it hurts)</li>
-    </ul>
 
+    <h2><i class="fas fa-code icon"></i> Problem solving</h2>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search..." oninput="filterResults()">
+    </div>
+    <div id="results">
+        <!-- Примеры контента -->
+        <div class="result"><li>My solutions to problems using the <a href="https://github.com/Aidoni0797/aiDoni_learn_playwright" target="_blank">Playwright</a> framework for automating web application testing.</li></div>
+        <div class="result"><li>My solutions to problems using the <a href="https://github.com/Aidoni0797/i_learn_Selenium" target="_blank">Selenium</a> framework for test automation</li></div>
+        <div class="result"><li>My problem solutions are in the <a href="https://github.com/Aidoni0797/iDONi_learn_Go" target="_blank">Go.</a>programming language.</li></div>
+        <div class="result"><li>My problem solutions are in the <a href="https://github.com/Aidoni0797/iDONi_and_JAVA" target="_blank">Java.</a>programming language.</li> (Sometimes I wonder why I need it if I don't use it in practice. Bari zhaksy bolsyn.)</div>
+        <div class="result"><li>I rarely participate in internships that don't bring meaningful <a href="https://github.com/Aidoni0797/internship_first_task" target="_blank">results.</a> (it hurts)</li></div>
+    </div>
+
+    <script>
+        function filterResults() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const results = document.querySelectorAll(".result");
+
+            results.forEach(result => {
+                const text = result.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    result.classList.remove("hidden");
+                } else {
+                    result.classList.add("hidden");
+                }
+            });
+        }
+    </script>
+    <hr>
     <h1 style="text-align: center; margin-top: 20px;">My projects</h1>
     <div class="container">
       <!-- Карточка проекта -->
