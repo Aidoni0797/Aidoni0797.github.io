@@ -241,6 +241,31 @@
 </head>
 <body>
   <header>
+    <h1>Информация о сессии</h1>
+    <p id="session-info">Загрузка...</p>
+
+    <script>
+        // Получаем текущее время в момент старта сессии
+        let sessionStartTime = sessionStorage.getItem('sessionStartTime');
+
+        if (!sessionStartTime) {
+            // Если сессия только началась, сохраняем время старта
+            sessionStartTime = new Date().toISOString();
+            sessionStorage.setItem('sessionStartTime', sessionStartTime);
+        }
+
+        // Вычисляем продолжительность сессии
+        const startTime = new Date(sessionStartTime);
+        const currentTime = new Date();
+        const sessionDuration = Math.round((currentTime - startTime) / 1000); // Время в секундах
+
+        // Отображаем информацию о сессии
+        document.getElementById('session-info').textContent = `Сессия началась в: ${startTime.toLocaleString()}. Время сессии: ${sessionDuration} секунд.`;
+
+        // Сохраняем продолжительность сессии в консоль (или передаем на сервер)
+        console.log('Продолжительность сессии:', sessionDuration, 'секунд');
+    </script>
+    
     <a href="login.html" class="auth-link login-link"><i class="fas fa-sign-in-alt"></i> Авторизация</a>
     <a href="register.html" class="auth-link register-link"><i class="fas fa-user-plus"></i> Регистрация</a>
     <a href="indexenglish.html"> <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" style="width:50px;height:auto;" alt="English"></a>
