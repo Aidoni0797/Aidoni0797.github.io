@@ -241,29 +241,21 @@
 </head>
 <body>
   <header>
-    <h1>Информация о сессии</h1>
+    <h1>Сессия пользователя</h1>
     <p id="session-info">Загрузка...</p>
 
     <script>
-        // Получаем текущее время в момент старта сессии
-        let sessionStartTime = sessionStorage.getItem('sessionStartTime');
+        // Проверяем, если сессия не началась, то начинаем её
+        let sessionStarted = sessionStorage.getItem('sessionStarted');
 
-        if (!sessionStartTime) {
-            // Если сессия только началась, сохраняем время старта
-            sessionStartTime = new Date().toISOString();
-            sessionStorage.setItem('sessionStartTime', sessionStartTime);
+        if (!sessionStarted) {
+            // Если сессия еще не началась, сохраняем факт её начала
+            sessionStorage.setItem('sessionStarted', 'true');
+            document.getElementById('session-info').textContent = 'Сессия началась!';
+        } else {
+            // Если сессия уже была, показываем, что она продолжается
+            document.getElementById('session-info').textContent = 'Сессия продолжается!';
         }
-
-        // Вычисляем продолжительность сессии
-        const startTime = new Date(sessionStartTime);
-        const currentTime = new Date();
-        const sessionDuration = Math.round((currentTime - startTime) / 1000); // Время в секундах
-
-        // Отображаем информацию о сессии
-        document.getElementById('session-info').textContent = `Сессия началась в: ${startTime.toLocaleString()}. Время сессии: ${sessionDuration} секунд.`;
-
-        // Сохраняем продолжительность сессии в консоль (или передаем на сервер)
-        console.log('Продолжительность сессии:', sessionDuration, 'секунд');
     </script>
     
     <a href="login.html" class="auth-link login-link"><i class="fas fa-sign-in-alt"></i> Авторизация</a>
