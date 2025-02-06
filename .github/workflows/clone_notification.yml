@@ -1,0 +1,26 @@
+name: Clone Notification
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Запускать каждый час
+  workflow_dispatch:  # Также можно вручную запускать
+
+jobs:
+  check-clones:
+    runs-on: ubuntu-latest  # Используем Ubuntu для выполнения
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run the script
+        run: |
+          python your_script.py  # Замените на имя вашего скрипта
