@@ -11,7 +11,7 @@ form.addEventListener('submit', async (e) => {
   const bad = document.getElementById('bad-count').textContent = badCount;
   const location = document.getElementById("location-info").textContent;
   // Данные Telegram
-  const BOT_TOKEN = '8178967594:AAFos-m53_Q6f0mBoEdvVhq0FH5V4jUOkdM'; // Токен бота
+  const BOT_TOKEN = '8178967594:AAE14G4kmVksV-Y3oyZNBQkxe98JDYQgzws'; // Токен бота
   const CHAT_ID = '1163463444'; // ID чата или группы
   const TEXT = `
     iDONi тебе сообщение из web-сайта iDONi:
