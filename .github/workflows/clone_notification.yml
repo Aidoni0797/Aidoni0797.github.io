@@ -14,4 +14,4 @@ jobs:
       - name: Set Telegram Token
         run: echo "TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> $GITHUB_ENV
       - name: Run script
-        run: node your-script.js  # или любой другой скрипт, который ты запускаешь
+        run: node ipapi.js  # или любой другой скрипт, который ты запускаешь
