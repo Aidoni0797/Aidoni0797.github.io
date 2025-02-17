@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages
+name: Replace Telegram Token
 
 on:
   push:
     branches:
-      - main  # можно заменить на любую ветку, например, если у тебя ветка "master"
+      - main
 
 jobs:
   replace-token:
