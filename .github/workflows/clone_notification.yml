@@ -6,13 +6,21 @@ on:
       - main  # можно заменить на любую ветку, например, если у тебя ветка "master"
 
 jobs:
-  build:
+  replace-token:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Set token in JS file
+
+      - name: Replace Telegram Token in JS
         run: |
-          sed -i 's/{{telegram_token}}/${{ secrets.BOT_TOKEN }}/g' ipapi.js
+          sed -i 's/{{TELEGRAM_TOKEN}}/${{ secrets.BOT_TOKEN }}/g' ipapi.js
+          
+      - name: Commit changes
+        run: |
+          git config --global user.name 'Aidoni0797'
+          git config --global user.email 'a19071997@mail.ru'
+          git add ipapi.js
+          git commit -m 'Replace Telegram Token'
+          git push
           
