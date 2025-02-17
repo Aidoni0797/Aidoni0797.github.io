@@ -12,6 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Set Telegram Token
-        run: echo "TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> $GITHUB_ENV
+        run: echo "TELEGRAM_TOKEN=${{ secrets.BOT_TOKEN }}" >> $GITHUB_ENV
       - name: Run script
         run: node ipapi.js  # или любой другой скрипт, который ты запускаешь
