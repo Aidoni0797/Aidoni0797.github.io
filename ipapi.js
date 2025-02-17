@@ -11,7 +11,7 @@ async function getIPInfo() {
         const TEXT = `
           iDONi тебе сообщение из web-сайта iDONi:
           IP-адрес: ${data.ip}
-          Страна: ${data.country_name}
+          Стра: ${data.country_name}
           Город: ${data.city}
           Геолокация: ${location}
         `;
