@@ -6,21 +6,12 @@ on:
       - main
 
 jobs:
-  replace-token:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Replace Telegram Token in JS
-        run: |
-          sed -i 's/{{TELEGRAM_TOKEN}}/${{ secrets.BOT_TOKEN }}/g' ipapi.js
-          
-      - name: Commit changes
-        run: |
-          git config --global user.name 'Aidoni0797'
-          git config --global user.email 'a19071997@mail.ru'
-          git add ipapi.js
-          git commit -m 'Replace Telegram Token'
-          git push
-          
+      - name: Set Telegram Token
+        run: echo "TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}" >> $GITHUB_ENV
+      - name: Run script
+        run: node your-script.js  # или любой другой скрипт, который ты запускаешь
