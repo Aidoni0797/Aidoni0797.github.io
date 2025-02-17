@@ -6,7 +6,7 @@ async function getIPInfo() {
   console.log("Страна:", data.country_name);
   console.log("Город:", data.city);
   console.log("Геолокация:", location);
-        const BOT_TOKEN = '8178967594:AAE14G4kmVksV-Y3oyZNBQkxe98JDYQgzws'; // Токен бота
+        const BOT_TOKEN = 'PLACEHOLDER_TOKEN'; // Токен бота
         const CHAT_ID = '1163463444'; // ID чата или группы
         const TEXT = `
           iDONi тебе сообщение из web-сайта iDONi:
