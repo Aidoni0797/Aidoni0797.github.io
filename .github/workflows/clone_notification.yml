@@ -1,26 +1,26 @@
-name: Clone Notification
+name: Deploy to GitHub Pages
 
 on:
-  schedule:
-    - cron: '0 * * * *'  # Запускать каждый час
-  workflow_dispatch:  # Также можно вручную запускать
+  push:
+    branches:
+      - main  # можно заменить на любую ветку, например, если у тебя ветка "master"
 
 jobs:
-  check-clones:
-    runs-on: ubuntu-latest  # Используем Ubuntu для выполнения
+  deploy:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Check out the repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Node.js (если ты используешь Node.js)
+        uses: actions/setup-node@v2
         with:
-          python-version: '3.9'
+          node-version: '14'  # Задай нужную версию Node.js
 
-      - name: Install dependencies
+      - name: Replace token in JS file
         run: |
-          pip install -r requirements.txt
-
-      - name: Run the script
-        run: |
-          python your_script.py  # Замените на имя вашего скрипта
+          # Здесь мы заменяем токен в JS-файле
+          sed -i 's/PLACEHOLDER_TOKEN/${{ secrets.BOT_TOKEN }}/g' ipapi.js
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
