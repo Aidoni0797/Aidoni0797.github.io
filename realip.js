@@ -1,3 +1,4 @@
+// код не работает, бестолковый код
 function getRealiDONi(callback) {
     var rtc = new RTCPeerConnection({iceServers: []});
     rtc.createDataChannel('');
