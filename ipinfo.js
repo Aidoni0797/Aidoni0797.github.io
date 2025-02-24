@@ -1,38 +1,19 @@
-async function getIPInfo() {
-  const response = await fetch("https://ipapi.co/json/");
-  const data = await response.json();
-  const location = await document.getElementById("location-info").textContent;
-  console.log("IP-адрес:", data.ip);
-  console.log("Страна:", data.country_name);
-  console.log("Город:", data.city);
-  console.log("Геолокация:", location);
-        const BOT_TOKEN = '8178967594:AAE14G4kmVksV-Y3oyZNBQkxe98JDYQgzws'; // Токен бота
-        const CHAT_ID = '1163463444'; // ID чата или группы
-        const TEXT = `
-          iDONi тебе сообщение из web-сайта iDONi:
-          IP-адрес: ${data.ip}
-          Стра: ${data.country_name}
-          Город: ${data.city}
-          Геолокация: ${location}
-        `;
-      
-        // Отправка данных через Telegram API
-        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT }),
+function getiDONiInfo() {
+      const url = "https://ipinfo.io/json";
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log("IP Address Information:");
+          console.log(`IP: data.ip`);
+          console.log(`City:{data.city || 'Not Available'}`);
+          console.log(`Region: data.region || 'Not Available'`);
+          console.log(`Country:{data.country}`);
+          console.log(`Location: data.loc`);
+          console.log(`ISP:{data.org}`);
         })
-        .then((response) => {
-          if (response.ok) {
-            form.reset(); // Сбросить форму
-          } else {
-            alert('Ошибка при отправке сообщения. Проверьте настройки бота.');
-          }
-        })
-        .catch((error) => {
-          alert('Произошла ошибка: ' + error.message);
+        .catch(error => {
+          console.log('Error:', error);
         });
-}
+    }
 
-getIPInfo();
+    getiDONiInfo();
