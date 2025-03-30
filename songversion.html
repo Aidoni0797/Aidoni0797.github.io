@@ -144,6 +144,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            background: white;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -158,17 +159,29 @@
             display: none;
             margin-top: 20px;
             padding: 10px;
+            background: black;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             margin: auto;
+            color: white;
         }
         .toggle-lyrics {
-            color: blue;
+            background-color: #007BFF;
+            color: white !important;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
-            text-decoration: underline;
-            display: block;
-            margin-top: 10px;
+            transition: background 0.3s, color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toggle-lyrics:hover {
+            background-color: #0056b3;
+            color: white !important;
         }
   </style>
   <script src="server.js"></script>
@@ -214,24 +227,26 @@
     
         <script>
             function toggleLyrics(file) {
-                var lyricsDiv = document.getElementById("lyrics");
-                var toggleText = document.querySelector(".toggle-lyrics");
-                
-                if (lyricsDiv.style.display === "none" || lyricsDiv.style.display === "") {
-                    fetch(file)
-                        .then(response => response.text())
-                        .then(text => {
-                            lyricsDiv.innerHTML = `<p>${text.replace(/\n/g, "<br>")}</p>`;
-                            lyricsDiv.style.display = "block";
-                            toggleText.innerHTML = "❌ Скрыть текст";
-                        })
-                        .catch(error => {
-                            lyricsDiv.innerHTML = "Ошибка загрузки текста";
-                        });
-                } else {
-                    lyricsDiv.style.display = "none";
-                    toggleText.innerHTML = "📖 Показать текст";
-                }
+              var lyricsDiv = document.getElementById("lyrics");
+              var toggleText = document.querySelector(".toggle-lyrics");
+              
+                  if (lyricsDiv.style.display === "none" || lyricsDiv.style.display === "") {
+                      fetch(file)
+                          .then(response => response.text())
+                          .then(text => {
+                              lyricsDiv.innerHTML = `<p>${text.replace(/\n/g, "<br>")}</p>`;
+                              lyricsDiv.style.display = "block";
+                              toggleText.innerHTML = "❌ Скрыть текст";
+                              toggleText.style.color = "white";
+                          })
+                          .catch(error => {
+                              lyricsDiv.innerHTML = "Ошибка загрузки текста";
+                          });
+                  } else {
+                      lyricsDiv.style.display = "none";
+                      toggleText.innerHTML = "📖 Показать текст";
+                      toggleText.style.color = "white";
+                  }
             }
         </script>
           
