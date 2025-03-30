@@ -199,103 +199,36 @@
     <div id="results">
         <!-- Примеры контента -->
         <div class="result">
-                <div class="music-container">
-                    <span class="play-button" onclick="toggleLyrics()">▶️</span>
-                    <span class="song-title">Tears of Gold</span>
-                </div>
-
-        
-        <div class="lyrics" id="lyrics">
-            <p>
-              [Verse 1]
-              Mama always told me
-              That I was too naive
-              Gave away my trust for pennies
-              I said "Don't you worry."
-              Didn't think that I'd be
-              Broken down and crying
-              Help me
-              
-              [Pre-Chorus]
-              Wrecked? Check
-              Heart? In debt
-              All you do is come around
-              Just came here to collect
-              Wrecked? Check
-              Heart? In debt
-              
-              [Chorus]
-              Don't you know that
-              I cried tears of gold for you
-              I sit here poor for you
-              Collect my pennies and my dimes
-              That's why you love it when I cry
-              Platinum love for you
-              I'd give no less for you
-              Generosity's my enemy
-              So I'm broke and your heart's rich
-              Because of me
-              
-              [Verse 2]
-              Know that this is my fault
-              Gave a little too much
-              Knew that this was gonna happen
-              But I'm not gonna lie
-              You can make me cry, thousand times
-              I come running back like
-              What is going on with my head?
-              
-              [Pre-Chorus]
-              Wrecked? Check
-              Heart? In debt
-              All you do is come around
-              Just came here to collect
-              Wrecked? Check
-              Heart? In debt
-              
-              [Chorus]
-              Don't you know that
-              I cried tears of gold for you
-              I sit here poor for you
-              Collect my pennies and my dimes
-              That's why you love it when I cry
-              Platinum love for you
-              I'd give no less for you
-              Generosity's my enemy
-              So I'm broke and your heart's rich
-              Because of me
-
-              [Bridge]
-              And the worst part is I'd do it all over again
-              The worst part is, I know it's never gonna end
-              I keep coming right back like a maniac
-              I keep coming right back like
-              And the worst part is I'd do it all over again
-              The worst part is, I know it's never gonna end
-              I keep coming right back like a maniac
-              
-              [Chorus]
-              I cried tears of gold for you
-              I sit here poor for you
-              Collect my pennies and my dimes
-              That's why you love it when I cry
-              Platinum love for you
-              I'd give no less for you
-              Generosity's my enemy
-              So I'm broke and your heart's rich
-              Because of me
-            </p>
-        </div>
+          <div class="music-container">
+              <span class="play-button" onclick="toggleLyrics('lyrics.txt')">▶️</span>
+              <span class="song-title">Tears of Gold</span>
+          </div>
+          
+          <span class="toggle-lyrics" onclick="toggleLyrics('lyrics.txt')">Показать текст</span>
+          <div class="lyrics" id="lyrics">
+              <p>
+                Загрузка...
+              </p>
+          </div>
     
         <script>
-            function toggleLyrics() {
-                var lyrics = document.getElementById("lyrics");
+            function toggleLyrics(file) {
+                var lyricsDiv = document.getElementById("lyrics");
                 var toggleText = document.querySelector(".toggle-lyrics");
-                if (lyrics.style.display === "none" || lyrics.style.display === "") {
-                    lyrics.style.display = "block";
-                    toggleText.textContent = "Скрыть текст";
+                
+                if (lyricsDiv.style.display === "none" || lyricsDiv.style.display === "") {
+                    fetch(file)
+                        .then(response => response.text())
+                        .then(text => {
+                            lyricsDiv.innerHTML = `<p>${text.replace(/\n/g, "<br>")}</p>`;
+                            lyricsDiv.style.display = "block";
+                            toggleText.textContent = "Скрыть текст";
+                        })
+                        .catch(error => {
+                            lyricsDiv.innerHTML = "Ошибка загрузки текста";
+                        });
                 } else {
-                    lyrics.style.display = "none";
+                    lyricsDiv.style.display = "none";
                     toggleText.textContent = "Показать текст";
                 }
             }
