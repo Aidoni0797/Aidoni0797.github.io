@@ -41,82 +41,6 @@
       border-radius: 12px;
       color: #ffffff;
     }
-    /* Стили для контейнера Telegram */
-    .telegram-container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-    }
-    
-    .telegram-container h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-    
-    .telegram-container p {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-    
-    .qr-code img {
-        width: 150px; /* Размер изображения QR-кода */
-        height: 150px;
-        margin-bottom: 20px;
-    }
-    
-    .telegram-container a {
-        font-size: 16px;
-        color: #0088cc;
-        text-decoration: none;
-    }
-    
-    .telegram-container a:hover {
-        text-decoration: underline;
-    }
-
-    /*Youtube container*/
-    /* Стили для контейнера Telegram */
-    .youtube-container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-    }
-    
-    .youtube-container h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
-    }
-    
-    .youtube-container p {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-    
-    .qr-codet img {
-        width: 200px; /* Размер изображения QR-кода */
-        height: 250px;
-        margin-bottom: 20px;
-    }
-    
-    .youtube-container a {
-        font-size: 16px;
-        color: #0088cc;
-        text-decoration: none;
-    }
-    
-    .youtube-container a:hover {
-        text-decoration: underline;
-    }
-    .form-container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        border-radius: 10px;
-    }
     h1, h2 {
       color: #1E90FF;
     }
@@ -138,37 +62,6 @@
     a:hover {
       text-decoration: underline;
     }
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    label {
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-    
-    input, textarea {
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
-    button {
-        padding: 10px;
-        background-color: #1E90FF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        font-family: 'Fredoka One', cursive;
-    }
-    
-    button:hover {
-        background-color: #1E90FF;
-    }
     ul {
       list-style: none;
       padding: 0;
@@ -180,30 +73,6 @@
       content: "\1F42C"; /* Дельфин 🐬 */
       margin-right: 0.5rem;
     }
-    
-    .slider-container {
-      width: 100%;
-      overflow: hidden; /* Обрезаем элементы, которые выходят за пределы */
-      padding: 20px;
-    }
-
-    .slider {
-      display: flex;
-      animation: slide 10s infinite linear; /* Анимация слайдера */
-    }
-
-    .slider i {
-      font-size: 80px; /* Увеличиваем размер иконок */
-      margin: 0 30px; /* Увеличиваем отступы между иконками */
-      color: #1E90FF;
-    }
-
-    .rating-container {
-      align-items: center;
-      gap: 10px;
-      font-size: 30px;
-    }
-
     button {
       padding: 10px;
       margin-top: 10px;
@@ -216,13 +85,6 @@
         top: 0;
         left: 0;
         z-index: -1;
-    }
-    video {
-        width: 100%;
-        height: auto;
-        max-width: 640px;
-        display: block;
-        margin: 0 auto;
     }
     @keyframes slide {
       0% {
@@ -307,7 +169,25 @@
     </div>
     <div id="results">
         <!-- Примеры контента -->
-        <div class="result"><li>Постараюсь освоить создание <a href="https://github.com/Aidoni0797/the_bot_is_coming_to_life" target="_blank">Telegram-бота</a> — на курсе, когда увидела это, удивление было таким, что глаза открылись шире некуда. Что ни говори, а земля рождает таланты.</li></div>
+        <div class="result">
+
+              <div class="music-container">
+            <span class="play-button" onclick="showLyrics()">▶️</span>
+            <span class="song-title">Название песни</span>
+        </div>
+        
+        <div class="lyrics" id="lyrics">
+            <p>Здесь будет текст песни...</p>
+        </div>
+    
+        <script>
+            function showLyrics() {
+                var lyrics = document.getElementById("lyrics");
+                lyrics.style.display = (lyrics.style.display === "none" || lyrics.style.display === "") ? "block" : "none";
+            }
+        </script>
+          
+        </div>
     </div>
 
     <script>
