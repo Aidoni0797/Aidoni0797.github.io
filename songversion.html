@@ -150,6 +150,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             margin: auto;
+            flex-direction: column;
         }
         .play-button {
             font-size: 24px;
@@ -157,7 +158,7 @@
         }
         .lyrics {
             display: none;
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 10px;
             background: black;
             border-radius: 8px;
@@ -178,6 +179,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            margin-top: 10px;
         }
         .toggle-lyrics:hover {
             background-color: #0056b3;
@@ -214,45 +216,42 @@
         <div class="result">
           <div class="music-container">
               <span class="play-button">▶️</span>
-              <span class="song-title" style="color:#007BFF;">Tears of Gold</span>
-              <p></p>
-              <button class="toggle-lyrics" onclick="toggleLyrics('lyrics.txt')">📖 Показать текст</button>
+              <span class="song-title" style="color:#007BFF;">Chandelier</span>
+              <button class="toggle-lyrics" onclick="toggleLyrics('lyrics1', 'lyrics1.txt', this)">📖 Показать текст</button>
+              <div class="lyrics" id="lyrics1">
+                  <p>Загрузка...</p>
+              </div>
           </div>
-          <p><br></p>
+          <p></p>
           <div class="music-container">
               <span class="play-button">▶️</span>
-              <span class="song-title" style="color:#007BFF;">Chandelier</span>
-              <p></p>
-              <button class="toggle-lyrics" onclick="toggleLyrics('lyrics1.txt')">📖 Показать текст</button>
+              <span class="song-title" style="color:#007BFF;">Tears of Gold</span>
+              <button class="toggle-lyrics" onclick="toggleLyrics('lyrics2', 'lyrics2.txt', this)">📖 Показать текст</button>
+              <div class="lyrics" id="lyrics2">
+                  <p>Загрузка...</p>
+              </div>
           </div>
-          <div class="lyrics" id="lyrics">
-              <p>
-                Загрузка...
-              </p>
-          </div>
+
     
         <script>
-            function toggleLyrics(file) {
-              var lyricsDiv = document.getElementById("lyrics");
-              var toggleText = document.querySelector(".toggle-lyrics");
-              
-                  if (lyricsDiv.style.display === "none" || lyricsDiv.style.display === "") {
-                      fetch(file)
-                          .then(response => response.text())
-                          .then(text => {
-                              lyricsDiv.innerHTML = `<p>${text.replace(/\n/g, "<br>")}</p>`;
-                              lyricsDiv.style.display = "block";
-                              toggleText.innerHTML = "❌ Скрыть текст";
-                              toggleText.style.color = "white";
-                          })
-                          .catch(error => {
-                              lyricsDiv.innerHTML = "Ошибка загрузки текста";
-                          });
-                  } else {
-                      lyricsDiv.style.display = "none";
-                      toggleText.innerHTML = "📖 Показать текст";
-                      toggleText.style.color = "white";
-                  }
+            function toggleLyrics(lyricsId, file, button) {
+                var lyricsDiv = document.getElementById(lyricsId);
+                
+                if (lyricsDiv.style.display === "none" || lyricsDiv.style.display === "") {
+                    fetch(file)
+                        .then(response => response.text())
+                        .then(text => {
+                            lyricsDiv.innerHTML = `<p>${text.replace(/\n/g, "<br>")}</p>`;
+                            lyricsDiv.style.display = "block";
+                            button.innerHTML = "❌ Скрыть текст";
+                        })
+                        .catch(error => {
+                            lyricsDiv.innerHTML = "Ошибка загрузки текста";
+                        });
+                } else {
+                    lyricsDiv.style.display = "none";
+                    button.innerHTML = "📖 Показать текст";
+                }
             }
         </script>
           
