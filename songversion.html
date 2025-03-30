@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iDONi</title>
+  <link rel="icon" href="iDONi.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Подключаем Font Awesome для иконок -->
+  <style>
+    body {
+      font-family: 'Fredoka One', cursive;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+      background: #081f3f;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+    .logo {
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+    }
+    header h1 {
+      margin-top: 1rem;
+      color: #003366; 
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-radius: 12px;
+      color: #ffffff;
+    }
+    /* Стили для контейнера Telegram */
+    .telegram-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    .telegram-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .qr-code img {
+        width: 150px; /* Размер изображения QR-кода */
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    
+    .telegram-container a {
+        font-size: 16px;
+        color: #0088cc;
+        text-decoration: none;
+    }
+    
+    .telegram-container a:hover {
+        text-decoration: underline;
+    }
+
+    /*Youtube container*/
+    /* Стили для контейнера Telegram */
+    .youtube-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    .youtube-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .youtube-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .qr-codet img {
+        width: 200px; /* Размер изображения QR-кода */
+        height: 250px;
+        margin-bottom: 20px;
+    }
+    
+    .youtube-container a {
+        font-size: 16px;
+        color: #0088cc;
+        text-decoration: none;
+    }
+    
+    .youtube-container a:hover {
+        text-decoration: underline;
+    }
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    h1, h2 {
+      color: #1E90FF;
+    }
+    p {
+      line-height: 1.8;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #000000;
+      color: #ffffff;
+      margin-top: 2rem;
+    }
+    a {
+      color: #1E90FF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    
+    input, textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #1E90FF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Fredoka One', cursive;
+    }
+    
+    button:hover {
+        background-color: #1E90FF;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 0.5rem 0;
+    }
+    ul li::before {
+      content: "\1F42C"; /* Дельфин 🐬 */
+      margin-right: 0.5rem;
+    }
+    
+    .slider-container {
+      width: 100%;
+      overflow: hidden; /* Обрезаем элементы, которые выходят за пределы */
+      padding: 20px;
+    }
+
+    .slider {
+      display: flex;
+      animation: slide 10s infinite linear; /* Анимация слайдера */
+    }
+
+    .slider i {
+      font-size: 80px; /* Увеличиваем размер иконок */
+      margin: 0 30px; /* Увеличиваем отступы между иконками */
+      color: #1E90FF;
+    }
+
+    .rating-container {
+      align-items: center;
+      gap: 10px;
+      font-size: 30px;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    canvas {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    video {
+        width: 100%;
+        height: auto;
+        max-width: 640px;
+        display: block;
+        margin: 0 auto;
+    }
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .auth-link {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none; /* Убираем подчеркивание */
+        border-radius: 5px; /* Округлые углы */
+        font-size: 16px;
+        text-align: center;
+        margin-right: 10px; /* Расстояние между кнопками */
+        transition: background-color 0.3s ease;
+    }
+
+    .login-link {
+        background-color: #4CAF50; /* Зеленый для авторизации */
+    }
+
+    .login-link:hover {
+        background-color: #45a049; /* Более темный зеленый при наведении */
+    }
+
+    .register-link {
+        background-color: #008CBA; /* Голубой для регистрации */
+    }
+
+    .register-link:hover {
+        background-color: #007B9E; /* Темно-голубой при наведении */
+    }
+    .search-container {
+            margin-bottom: 20px;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .result {
+            padding: 10px;
+            border: 1px dashed #1E90FF;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+  </style>
+  <script src="session.js"></script>
+  <script src="ipapi.js"></script>
+  <script src="server.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KY8X0BXQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-7KY8X0BXQ5');
+  </script>
+</head>
+<body>
+  <header>
+    <canvas id="matrix"></canvas>
+    <br>
+    <img src="12.png" alt="iDONi Logo" class="logo">
+    <h1 style="color:#FFFFFF;">SongVerse</h1>
+    <br>
+    <p align="center" ><img  src = "https://github.com/7oSkaaa/7oSkaaa/blob/main/Images/about_me.gif?raw=true" width = 100px></p> 
+  </header>
+  <main>
+    <div class="main-content">
+    
+    <h2><i class="fas fa-code icon"></i> Музыки, которая мне нравится</h2>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Поиск..." oninput="filterResults()">
+    </div>
+    <div id="results">
+        <!-- Примеры контента -->
+        <div class="result"><li>Постараюсь освоить создание <a href="https://github.com/Aidoni0797/the_bot_is_coming_to_life" target="_blank">Telegram-бота</a> — на курсе, когда увидела это, удивление было таким, что глаза открылись шире некуда. Что ни говори, а земля рождает таланты.</li></div>
+    </div>
+
+    <script>
+        function filterResults() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const results = document.querySelectorAll(".result");
+
+            results.forEach(result => {
+                const text = result.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    result.classList.remove("hidden");
+                } else {
+                    result.classList.add("hidden");
+                }
+            });
+        }
+    </script>
+    <hr>
+
+    
+    <h2><i class="fas fa-address-book icon"></i> Контакты</h2>
+    <ul>
+      <li><a href="mailto:a19071997@mail.ru" title="Email" style="color: white;"><i class="fas fa-envelope"></i></a>
+      <a href="https://t.me/iDONi97" title="Telegram" style="color: white;"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.instagram.com/python_developer_idoni/" title="Instagram" style="color: white;"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/Aidoni0797" title="GitHub" style="color: white;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ai-doni-102a7b308" title="LinkedIn" style="color: white;"><i class="fab fa-linkedin"></i></a>
+      <a href="https://discord.com/users/aidoni0797" title="Discord" style="color: white;"><i class="fab fa-discord"></i></a>
+      <a href="https://leetcode.com/u/iDONi97/" title="LeetCode" style="color: white;"><i class="fas fa-code"></i></a>
+      <a href="https://stepik.org/users/101181330/profile" title="Stepik" style="color: white;"><i class="fas fa-graduation-cap"></i></a>
+      <a href="https://www.youtube.com/channel/UCH3wSjFSFeaf18IV4jX1Niw" title="YouTube" style="color: white;"><i class="fab fa-youtube"></i></a></li>
+    </ul>
+  </div>
+  </main>
+  <footer>
+    <p>© 2025 Мои проекты и разборы | iDONi</p>
+  </footer>
+  <script src="telegram-feedback.js"></script>
+  <script src="geo.js"></script>
+  <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const text = "iDONi";
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+        for (let i = 0; i < columns; i++) {
+            rainDrops[i] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#081f3f';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const char = text.charAt(Math.floor(Math.random() * text.length));
+                ctx.fillText(char, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i] += 0.5; // Медленнее падение
+            }
+        };
+
+        setInterval(draw, 60); // Было 30, стало 60 для плавности
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
