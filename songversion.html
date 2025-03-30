@@ -139,6 +139,39 @@
         .hidden {
             display: none;
         }
+    .music-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        .play-button {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .lyrics {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        .toggle-lyrics {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+            display: block;
+            margin-top: 10px;
+        }
   </style>
   <script src="server.js"></script>
   <!-- Google tag (gtag.js) -->
@@ -168,11 +201,11 @@
     <div id="results">
         <!-- Примеры контента -->
         <div class="result">
+                <div class="music-container">
+                    <span class="play-button" onclick="toggleLyrics()">▶️</span>
+                    <span class="song-title">Tears of Gold</span>
+                </div>
 
-              <div class="music-container">
-            <span class="play-button" onclick="showLyrics()">▶️</span>
-            <span class="song-title">Tears of Gold</span>
-        </div>
         
         <div class="lyrics" id="lyrics">
             <p>
@@ -257,9 +290,16 @@
         </div>
     
         <script>
-            function showLyrics() {
+            function toggleLyrics() {
                 var lyrics = document.getElementById("lyrics");
-                lyrics.style.display = (lyrics.style.display === "none" || lyrics.style.display === "") ? "block" : "none";
+                var toggleText = document.querySelector(".toggle-lyrics");
+                if (lyrics.style.display === "none" || lyrics.style.display === "") {
+                    lyrics.style.display = "block";
+                    toggleText.textContent = "Скрыть текст";
+                } else {
+                    lyrics.style.display = "none";
+                    toggleText.textContent = "Показать текст";
+                }
             }
         </script>
           
