@@ -216,7 +216,11 @@
           <div class="music-container">
               <span class="play-button">▶️</span>
               <span class="song-title" style="color:#007BFF;">Chandelier</span>
-              <button class="toggle-lyrics" onclick="toggleLyrics('lyrics1', 'lyrics1.txt', this)">📖 Показать текст</button>
+              <div class="buttons">
+                <button class="toggle-lyrics" onclick="toggleLyrics('lyrics1', 'lyrics1.txt', this)">📖 Показать текст</button>
+                <button class="play-button" onclick="playAudio('audio1')">▶️ Проиграть</button>
+              </div>
+              <audio id="audio1" src="song1.mp3"></audio>
               <div class="lyrics" id="lyrics1">
                   <p>Загрузка...</p>
               </div>
@@ -227,7 +231,11 @@
           <div class="music-container">
               <span class="play-button">▶️</span>
               <span class="song-title" style="color:#007BFF;">Tears of Gold</span>
-              <button class="toggle-lyrics" onclick="toggleLyrics('lyrics2', 'lyrics2.txt', this)">📖 Показать текст</button>
+              <div class="buttons">
+                  <button class="toggle-lyrics" onclick="toggleLyrics('lyrics2', 'lyrics2.txt', this)">📖 Показать текст</button>
+                  <button class="play-button" onclick="playAudio('audio2')">▶️ Проиграть</button>
+              </div>
+              <audio id="audio2" src="song2.mp3"></audio>
               <div class="lyrics" id="lyrics2">
                   <p>Загрузка...</p>
               </div>
