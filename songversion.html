@@ -203,7 +203,7 @@
               <span class="play-button">▶️</span>
               <span class="song-title">Tears of Gold</span>
               <p></p>
-              <span class="toggle-lyrics" onclick="toggleLyrics('lyrics.txt')" style="background:white;padding:10px;">Показать текст</span>
+              <button class="toggle-lyrics" onclick="toggleLyrics('lyrics.txt')">📖 Показать текст</button>
           </div>
           
           <div class="lyrics" id="lyrics">
@@ -223,14 +223,14 @@
                         .then(text => {
                             lyricsDiv.innerHTML = `<p>${text.replace(/\n/g, "<br>")}</p>`;
                             lyricsDiv.style.display = "block";
-                            toggleText.textContent = "Скрыть текст";
+                            toggleText.innerHTML = "❌ Скрыть текст";
                         })
                         .catch(error => {
                             lyricsDiv.innerHTML = "Ошибка загрузки текста";
                         });
                 } else {
                     lyricsDiv.style.display = "none";
-                    toggleText.textContent = "Показать текст";
+                    toggleText.innerHTML = "📖 Показать текст";
                 }
             }
         </script>
