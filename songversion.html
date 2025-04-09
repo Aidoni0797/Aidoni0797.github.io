@@ -305,6 +305,21 @@
           </div>
         </div>
           <p></p>
+        
+      <div class="result">
+          <div class="music-container">
+              <span class="song-title" style="color:white;">Mood</span>
+              <div class="buttons">
+                  <button class="toggle-lyrics" onclick="toggleLyrics('lyrics8', 'lyrics8.txt', this)">📖 Показать текст</button>
+                  <button class="play-button" onclick="playAudio('audio8')">▶️ Проиграть</button>
+              </div>
+              <audio id="audio8" src="song8.mp3"></audio>
+              <div class="lyrics" id="lyrics8">
+                  <p>Загрузка...</p>
+              </div>
+          </div>
+        </div>
+          <p></p>
         <script>
             function toggleLyrics(lyricsId, file, button) {
                 var lyricsDiv = document.getElementById(lyricsId);
