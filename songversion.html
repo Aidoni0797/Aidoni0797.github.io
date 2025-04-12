@@ -350,13 +350,33 @@
         </div>
           <p></p>
         <script>
-          function playAudio(id) {
-            const audio = document.getElementById(id);
-            if (audio) {
-              audio.play();
+          let currentAudio = null;
+        
+          function playAudio(id, button) {
+            const newAudio = document.getElementById(id);
+        
+            // Если сейчас играет другой трек — остановить его
+            if (currentAudio && currentAudio !== newAudio) {
+              currentAudio.pause();
+              currentAudio.currentTime = 0;
+              // Находим старую кнопку и возвращаем иконку ▶️
+              const oldButton = document.querySelector(`button[data-audio='${currentAudio.id}']`);
+              if (oldButton) oldButton.textContent = '▶️ Проиграть';
+            }
+        
+            // Если этот трек уже играет — остановить
+            if (newAudio.paused) {
+              newAudio.play();
+              button.textContent = '⏸️ Пауза';
+              currentAudio = newAudio;
+            } else {
+              newAudio.pause();
+              button.textContent = '▶️ Проиграть';
+              currentAudio = null;
             }
           }
         </script>
+
         <script>
             function toggleLyrics(lyricsId, file, button) {
                 var lyricsDiv = document.getElementById(lyricsId);
