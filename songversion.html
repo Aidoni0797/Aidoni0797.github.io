@@ -350,6 +350,14 @@
         </div>
           <p></p>
         <script>
+          function playAudio(id) {
+            const audio = document.getElementById(id);
+            if (audio) {
+              audio.play();
+            }
+          }
+        </script>
+        <script>
             function toggleLyrics(lyricsId, file, button) {
                 var lyricsDiv = document.getElementById(lyricsId);
                 
