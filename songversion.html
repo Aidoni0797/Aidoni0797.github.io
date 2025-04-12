@@ -325,7 +325,7 @@
               <span class="song-title" style="color:white;">All of me</span>
               <div class="buttons">
                   <button class="toggle-lyrics" onclick="toggleLyrics('lyrics9', 'lyrics9.txt', this)">📖 Показать текст</button>
-                  <button class="play-button" onclick="playAudio('audio9')">▶️ Проиграть</button>
+                  <button class="play-button" data-audio="audio9" onclick="playAudio('audio9', this)">▶️ Проиграть</button>
               </div>
               <audio id="audio9" src="song9.mp3"></audio>
               <div class="lyrics" id="lyrics9">
@@ -340,7 +340,7 @@
               <span class="song-title" style="color:white;">Wake Me Up</span>
               <div class="buttons">
                   <button class="toggle-lyrics" onclick="toggleLyrics('lyrics10', 'lyrics10.txt', this)">📖 Показать текст</button>
-                  <button class="play-button" onclick="playAudio('audio10')">▶️ Проиграть</button>
+                 <button class="play-button" data-audio="audio10" onclick="playAudio('audio10', this)">▶️ Проиграть</button>
               </div>
               <audio id="audio10" src="song10.mp3"></audio>
               <div class="lyrics" id="lyrics10">
