@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const TelegramBot = require('node-telegram-bot-api');
 
 // Telegram ���������
-const TELEGRAM_TOKEN = '8178967594:AAE14G4kmVksV-Y3oyZNBQkxe98JDYQgzws';
+const TELEGRAM_TOKEN = '7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ';
 const CHAT_ID = '1163463444'; // ������ �� ID
 
 const bot = new TelegramBot(TELEGRAM_TOKEN);
