@@ -17,7 +17,7 @@
 
         console.log(JSON.stringify(headers, null, 2));
 
-        const BOT_TOKEN = '8178967594:AAE14G4kmVksV-Y3oyZNBQkxe98JDYQgzws'; // Токен бота
+        const BOT_TOKEN = '7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ'; // Токен бота
         const CHAT_ID = '1163463444'; // ID чата или группы
         const TEXT = `
           iDONi лично к тебе:
