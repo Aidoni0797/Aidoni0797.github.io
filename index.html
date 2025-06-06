@@ -298,42 +298,37 @@
     <a href="index.html"> RU </a>
 
     <script>
-      // Если вдруг переменные уже есть — не переопределяем
-      if (typeof TOKEN === "undefined") {
-        var TOKEN = "7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ";
-      }
-    
-      if (typeof CHAT_ID === "undefined") {
-        var CHAT_ID = "1163463444";
-      }
-    
-      function sendMessageAndRedirect(text, url) {
-        fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: text
-          })
+        const TOKENFIRST = "7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ";
+        const CHAT_IDFIRST = "1163463444";
+      
+        const sendMessageAndRedirect = (text, url) => {
+          fetch(`https://api.telegram.org/bot${TOKENFIRST}/sendMessage`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              chat_id: CHAT_IDFIRST,
+              text: text
+            })
+          });
+      
+          setTimeout(() => {
+            window.location.href = url;
+          }, 400);
+        };
+      
+        document.querySelector('a[href="indexenglish.html"]').addEventListener("click", function (e) {
+          e.preventDefault();
+          sendMessageAndRedirect("🌐 Пользователь нажал EN-кнопку", "indexenglish.html");
         });
-    
-        setTimeout(() => {
-          window.location.href = url;
-        }, 400);
-      }
-    
-      document.querySelector('a[href="indexenglish.html"]').addEventListener("click", function (e) {
-        e.preventDefault();
-        sendMessageAndRedirect("🌐 Пользователь нажал EN-кнопку", "indexenglish.html");
-      });
-    
-      document.querySelector('a[href="index.html"]').addEventListener("click", function (e) {
-        e.preventDefault();
-        sendMessageAndRedirect("🇷🇺 Пользователь нажал RU-кнопку", "index.html");
-      });
-    </script>
+      
+        document.querySelector('a[href="index.html"]').addEventListener("click", function (e) {
+          e.preventDefault();
+          sendMessageAndRedirect("🇷🇺 Пользователь нажал RU-кнопку", "index.html");
+        });
+      </script>
+
 
     
     <br>
