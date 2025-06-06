@@ -296,6 +296,38 @@
     <canvas id="matrix"></canvas>
     <a href="indexenglish.html"> EN / </a>
     <a href="index.html"> RU </a>
+
+    <script>
+
+      const TOKEN = "7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ";
+      const CHAT_ID = "1163463444"; // свой ID можно узнать через @userinfobot
+      const sendMessage = (text) => {
+        const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+        const data = {
+          chat_id: CHAT_ID,
+          text: text
+        };
+    
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+      };
+    
+      document.querySelector('a[href="indexenglish.html"]').addEventListener("click", function () {
+        sendMessage("🌐 Пользователь нажал EN-кнопку (английская версия)");
+      });
+    
+      document.querySelector('a[href="index.html"]').addEventListener("click", function () {
+        sendMessage("🇷🇺 Пользователь нажал RU-кнопку (русская версия)");
+      });
+
+
+    </script>
+    
     <br>
     <img src="12.png" alt="iDONi Logo" class="logo">
     <h1 style="color:#FFFFFF;">Добро пожаловать</h1>
