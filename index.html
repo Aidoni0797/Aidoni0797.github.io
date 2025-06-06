@@ -295,34 +295,16 @@
   <header>
     <canvas id="matrix"></canvas>
     <script>
-      const TOKENSECOND = "7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ'";
-      const CHAT_IDSECOND = "1163463444";
-    
-      const sendToTelegramScroll = (text) => {
-        fetch(`https://api.telegram.org/bot${TOKENSECOND}/sendMessage`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            chat_id: CHAT_IDSECOND,
-            text: text
-          })
-        });
-      };
-    
-      let scrollSent = false;
+      let scrollNotified = false;
     
       window.addEventListener("scroll", () => {
-        if (!scrollSent) {
-          sendToTelegramScroll("📜 Пользователь начал прокручивать страницу");
-          scrollSent = true;
-    
-          // Можно сбросить флаг через 30 секунд
-          setTimeout(() => scrollSent = false, 30000);
+        if (!scrollNotified) {
+          console.log("📜 Пользователь начал прокручивать страницу");
+          scrollNotified = true;
         }
       });
     </script>
+
 
     <a href="indexenglish.html"> EN / </a>
     <a href="index.html"> RU </a>
