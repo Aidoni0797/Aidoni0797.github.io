@@ -295,15 +295,20 @@
   <header>
     <canvas id="matrix"></canvas>
     <script>
-      let scrollNotified = false;
+      // Проверим при загрузке страницы
+      if (localStorage.getItem("scrolled") === "true") {
+        console.log("👀 Пользователь уже прокручивал эту страницу.");
+      }
     
+      // Отследим новую прокрутку
       window.addEventListener("scroll", () => {
-        if (!scrollNotified) {
-          console.log("📜 Пользователь начал прокручивать страницу");
-          scrollNotified = true;
+        if (!localStorage.getItem("scrolled")) {
+          localStorage.setItem("scrolled", "true");
+          console.log("📌 Прокрутка зафиксирована в localStorage!");
         }
       });
     </script>
+
 
 
     <a href="indexenglish.html"> EN / </a>
