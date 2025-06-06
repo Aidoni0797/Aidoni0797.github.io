@@ -315,36 +315,43 @@
     <a href="index.html"> RU </a>
 
     <script>
-        const TOKENFIRST = "7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ";
-        const CHAT_IDFIRST = "1163463444";
-      
-        const sendMessageAndRedirect = (text, url) => {
-          fetch(`https://api.telegram.org/bot${TOKENFIRST}/sendMessage`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              chat_id: CHAT_IDFIRST,
-              text: text
-            })
-          });
-      
-          setTimeout(() => {
-            window.location.href = url;
-          }, 400);
-        };
-      
-        document.querySelector('a[href="indexenglish.html"]').addEventListener("click", function (e) {
-          e.preventDefault();
-          sendMessageAndRedirect("🌐 Пользователь нажал EN-кнопку", "indexenglish.html");
+      const TOKENFIRST = "7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ";
+      const CHAT_IDFIRST = "1163463444";
+    
+      const sendMessageAndRedirect = (buttonLabel, url) => {
+        // Проверим localStorage
+        const scrolled = localStorage.getItem("scrolled") === "true" ? "✅ прокручивал" : "❌ не прокручивал";
+        const fullMessage = `${buttonLabel}. Прокрутка: ${scrolled}`;
+    
+        // Отправим в Telegram
+        fetch(`https://api.telegram.org/bot${TOKENFIRST}/sendMessage`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            chat_id: CHAT_IDFIRST,
+            text: fullMessage
+          })
         });
-      
-        document.querySelector('a[href="index.html"]').addEventListener("click", function (e) {
-          e.preventDefault();
-          sendMessageAndRedirect("🇷🇺 Пользователь нажал RU-кнопку", "index.html");
-        });
-      </script>
+    
+        // Переход через 400 мс
+        setTimeout(() => {
+          window.location.href = url;
+        }, 400);
+      };
+    
+      document.querySelector('a[href="indexenglish.html"]').addEventListener("click", function (e) {
+        e.preventDefault();
+        sendMessageAndRedirect("🌐 Пользователь нажал EN-кнопку", "indexenglish.html");
+      });
+    
+      document.querySelector('a[href="index.html"]').addEventListener("click", function (e) {
+        e.preventDefault();
+        sendMessageAndRedirect("🇷🇺 Пользователь нажал RU-кнопку", "index.html");
+      });
+    </script>
+
 
 
     
