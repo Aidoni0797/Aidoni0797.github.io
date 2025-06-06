@@ -293,6 +293,20 @@
 <body>
   <header>
     <canvas id="matrix"></canvas>
+    <script>
+      // Проверим при загрузке страницы
+      if (localStorage.getItem("scrolled") === "true") {
+        console.log("👀 Пользователь уже прокручивал эту страницу.");
+      }
+    
+      // Отследим новую прокрутку
+      window.addEventListener("scroll", () => {
+        if (!localStorage.getItem("scrolled")) {
+          localStorage.setItem("scrolled", "true");
+          console.log("📌 Прокрутка зафиксирована в localStorage!");
+        }
+      });
+    </script>
     <a href="indexenglish.html"> EN /</a>
     <a href="index.html">RU</a>
 
