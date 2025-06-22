@@ -278,6 +278,91 @@
         .hidden {
             display: none;
         }
+    /* Кнопка чата */
+        #chatToggle {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #0077ff;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          font-size: 30px;
+          cursor: pointer;
+          z-index: 1000;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Контейнер чата */
+        #chatBox {
+          display: none;
+          flex-direction: column;
+          position: fixed;
+          bottom: 90px;
+          right: 20px;
+          width: 300px;
+          height: 400px;
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          z-index: 999;
+        }
+    
+        #chatHeader {
+          background-color: #0077ff;
+          color: white;
+          padding: 10px;
+          text-align: center;
+          font-weight: bold;
+        }
+    
+        #chat {
+          flex: 1;
+          padding: 10px;
+          overflow-y: auto;
+          font-size: 14px;
+        }
+    
+        .message {
+          margin-bottom: 10px;
+        }
+    
+        .user {
+          color: blue;
+        }
+    
+        .bot {
+          color: green;
+        }
+    
+        #inputArea {
+          display: flex;
+          padding: 10px;
+          border-top: 1px solid #ccc;
+        }
+    
+        #userInput {
+          flex: 1;
+          padding: 5px;
+          font-size: 14px;
+        }
+    
+        #sendBtn {
+          margin-left: 5px;
+          padding: 5px 10px;
+          background-color: #0077ff;
+          color: white;
+          border: none;
+          cursor: pointer;
+        }
+    
+        #sendBtn:disabled {
+          background-color: #999;
+        }
   </style>
   <!-- Google tag (gtag.js) -->
   <script src="server.js"></script>
@@ -291,6 +376,48 @@
   </script>
 </head>
 <body>
+  <!-- Кнопка для открытия/закрытия чата -->
+  <button id="chatToggle" onclick="toggleChat()">💬</button>
+
+  <!-- Сам чат -->
+  <div id="chatBox">
+    <div id="chatHeader">AI Чат</div>
+    <div id="chat"></div>
+    <div id="inputArea">
+      <input type="text" id="userInput" placeholder="Ваш вопрос..." />
+      <button id="sendBtn" onclick="sendMessage()">⏎</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chatBox = document.getElementById("chatBox");
+      chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chat = document.getElementById("chat");
+
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      chat.innerHTML += `<div class="message user"><strong>Вы:</strong> ${userText}</div>`;
+      input.value = "";
+      input.disabled = true;
+
+      chat.innerHTML += `<div class="message bot"><strong>Бот:</strong> Думаю над ответом...</div>`;
+      chat.scrollTop = chat.scrollHeight;
+
+      setTimeout(() => {
+        const fakeAnswer = "Это тестовый ответ. В будущем здесь будет ответ от ИИ.";
+        chat.innerHTML = chat.innerHTML.replace("Думаю над ответом...", fakeAnswer);
+        input.disabled = false;
+        input.focus();
+        chat.scrollTop = chat.scrollHeight;
+      }, 1000);
+    }
+  </script>
   <header>
     <canvas id="matrix"></canvas>
     <script>
