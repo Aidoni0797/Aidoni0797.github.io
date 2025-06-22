@@ -377,6 +377,51 @@
   </script>
 </head>
 <body>
+  <!-- Кнопка для открытия/закрытия чата -->
+  <button id="chatToggle" onclick="toggleChat()">💬</button>
+
+  <!-- Сам чат -->
+  <div id="chatBox">
+    <div id="chatHeader">AI Чат</div>
+    <div id="chat"></div>
+    <div id="inputArea">
+      <input type="text" id="userInput" placeholder="Ваш вопрос..." />
+      <button id="sendBtn" onclick="sendMessage()">⏎</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const chatBox = document.getElementById("chatBox");
+      chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chat = document.getElementById("chat");
+
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      chat.innerHTML += `<div class="message user"><strong>Вы:</strong> ${userText}</div>`;
+      input.value = "";
+      input.disabled = true;
+
+      chat.innerHTML += `<div class="message bot"><strong>Бот:</strong> Думаю над ответом...</div>`;
+      chat.scrollTop = chat.scrollHeight;
+
+      setTimeout(() => {
+        const fakeAnswer = "Это тестовый ответ. В будущем здесь будет ответ от ИИ.";
+        chat.innerHTML = chat.innerHTML.replace("Думаю над ответом...", fakeAnswer);
+        input.disabled = false;
+        input.focus();
+        chat.scrollTop = chat.scrollHeight;
+      }, 1000);
+    }
+  </script>
+
+
+  
   <header>
     <canvas id="matrix"></canvas>
     <script>
