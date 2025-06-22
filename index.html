@@ -277,6 +277,91 @@
         .hidden {
             display: none;
         }
+    /* Кнопка чата */
+        #chatToggle {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #0077ff;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          font-size: 30px;
+          cursor: pointer;
+          z-index: 1000;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Контейнер чата */
+        #chatBox {
+          display: none;
+          flex-direction: column;
+          position: fixed;
+          bottom: 90px;
+          right: 20px;
+          width: 300px;
+          height: 400px;
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          z-index: 999;
+        }
+    
+        #chatHeader {
+          background-color: #0077ff;
+          color: white;
+          padding: 10px;
+          text-align: center;
+          font-weight: bold;
+        }
+    
+        #chat {
+          flex: 1;
+          padding: 10px;
+          overflow-y: auto;
+          font-size: 14px;
+        }
+    
+        .message {
+          margin-bottom: 10px;
+        }
+    
+        .user {
+          color: blue;
+        }
+    
+        .bot {
+          color: green;
+        }
+    
+        #inputArea {
+          display: flex;
+          padding: 10px;
+          border-top: 1px solid #ccc;
+        }
+    
+        #userInput {
+          flex: 1;
+          padding: 5px;
+          font-size: 14px;
+        }
+    
+        #sendBtn {
+          margin-left: 5px;
+          padding: 5px 10px;
+          background-color: #0077ff;
+          color: white;
+          border: none;
+          cursor: pointer;
+        }
+    
+        #sendBtn:disabled {
+          background-color: #999;
+        }
   </style>
   <script src="session.js"></script>
   <script src="ipapi.js"></script>
