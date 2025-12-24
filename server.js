@@ -17,7 +17,7 @@
 
         console.log(JSON.stringify(headers, null, 2));
 
-        const BOT_TOKEN = '7722533303:AAGkV0WauU6r0UBgqYoxnStWZtoRkxE25tQ'; // Токен бота
+        const BOT_TOKEN = '7722533303:AAFw7FfOgT8V1mrc07TY_PLIbeIvwFBuUIA'; // Токен бота
         const CHAT_ID = '1163463444'; // ID чата или группы
         const TEXT = `
           iDONi лично к тебе:
@@ -41,3 +41,4 @@
         .catch((error) => {
           alert('Произошла ошибка: ' + error.message);
         });
+
